@@ -1,0 +1,9 @@
+.logo_icon{width: 60%;}
+nav.navbar.navbar-expand-lg.navbar-dark.bg-transparent{background: #2c458f !important;}
+.me-auto.navbar-nav a {color: #fff;font-size: 16px;padding: 10px 30px !important;background: transparent;text-align: left;}
+.me-auto.navbar-nav a:hover {background: #fff !important;color: #000;border-radius: 5px;}
+.mob-hide{width: 72% !important;float: left !important;text-align: left ;}
+.me-auto.navbar-nav{justify-content: space-between;width: 100%;}
+@media screen and (min-width:992px){
+  .mob-hide{display: none;}
+}
