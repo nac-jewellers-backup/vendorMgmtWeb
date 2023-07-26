@@ -15,9 +15,43 @@
     
 }
 p.card-text {
-    border: 1px solid #eee;
+    border: 1px solid #eee !important;
     border-radius: 10px;
-    margin: 20px 0;
+    color: #fff !important;
+}
+p.design_develop.card-text,
+p.copywright.card-text {
+    color: #000;
+}
+.card-text:last-child{
+    margin: 15px 0;
+}
+.man-img{
+    position: absolute;
+    bottom: 0;
+    width: 16%;
+    right: 17%;
+}
+p.card-text:hover {
+    background: #fff;
+    color: #000;
+}
+p.card-text:hover .svg{
+    color: #000 !important;
+}
+p.card-text{
+    color: #fff;
+}
+p.card-text:hover{
+    color: #000 !important;
+}
+button.width100.btn.btn-primary {
+    background: #383990;
+    border-color: #383990;
+}
+button.width100.btn.btn-primary:hover {
+    background: #3f41ff;
+    border-color: #383990;
 }
 @media screen and (min-width:1366px){
     .desktop-vmiddle {
@@ -28,5 +62,33 @@ p.card-text {
     }
     .box{
         width: 50%;
+    }
+}
+@media screen and (min-width:320px) and (max-width:768px){
+    .mobpad{
+        height: 100% !important;
+    }
+    .mobpadding{
+        padding-bottom: 50px;
+    }
+    .man-img{
+        bottom: -68%;
+        width: 30%;
+        right: 0%;
+        display: none;
+    }
+    .login-logo{
+        width: 55% !important;
+    }
+}
+@media screen and (min-width:768px) and (max-width:1366px){
+    .man-img{
+       right: 0;
+    }
+    p.card-text div{
+        padding: 20px 0 !important;
+    }
+    .box{
+        width: 65%;
     }
 }
