@@ -1,16 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import AppMenuitem from './AppMenuitem';
-import { LayoutContext } from './context/layoutcontext';
 import { MenuProvider } from './context/menucontext';
-import Link from 'next/link';
 
 const AppMenu = () => {
-    const { layoutConfig } = useContext(LayoutContext);
-
     const model = [
         {
-            label: 'Home',
-            items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
+            items: [
+                { label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/', id: 'navDashboard' },
+                { label: 'Admin Lists', icon: 'pi pi-fw pi-user', to: '/pages/admin', id: 'navAdmin' }
+            ]
         },
         {
             label: 'UI Components',
@@ -166,7 +164,7 @@ const AppMenu = () => {
         <MenuProvider>
             <ul className="layout-menu">
                 {model.map((item, i) => {
-                    return !item.seperator ? <AppMenuitem item={item} root={true} index={i} key={item.label} /> : <li className="menu-separator"></li>;
+                    return !item.seperator ? <AppMenuitem item={item} root={true} index={i} key={item.label} id={item.id} /> : <li className="menu-separator"></li>;
                 })}
             </ul>
         </MenuProvider>

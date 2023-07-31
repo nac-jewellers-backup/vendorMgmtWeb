@@ -11,6 +11,7 @@ const AppMenuitem = (props) => {
     const router = useRouter();
     const item = props.item;
     const key = props.parentKey ? props.parentKey + '-' + props.index : String(props.index);
+    const navID = item.id ?? 'no-id';
     const isActiveRoute = item.to && router.pathname === item.to;
     const active = activeMenu === key || activeMenu.startsWith(key + '-');
 
@@ -72,7 +73,7 @@ const AppMenuitem = (props) => {
             ) : null}
 
             {item.to && !item.items && item.visible !== false ? (
-                <Link href={item.to} replace={item.replaceUrl} target={item.target} onClick={(e) => itemClick(e)} className={classNames(item.class, 'p-ripple', { 'active-route': isActiveRoute })} tabIndex={0}>
+                <Link href={item.to} id={navID} replace={item.replaceUrl} target={item.target} onClick={(e) => itemClick(e)} className={classNames(item.class, 'p-ripple', { 'active-route': isActiveRoute })} tabIndex={0}>
                     <i className={classNames('layout-menuitem-icon', item.icon)}></i>
                     <span className="layout-menuitem-text">{item.label}</span>
                     {item.items && <i className="pi pi-fw pi-angle-down layout-submenu-toggler"></i>}

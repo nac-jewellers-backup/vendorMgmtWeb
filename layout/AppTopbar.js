@@ -4,6 +4,8 @@ import { classNames } from 'primereact/utils';
 import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react';
 import { LayoutContext } from './context/layoutcontext';
 import { Menu } from 'primereact/menu';
+import { Badge } from 'primereact/badge';
+
 
 const AppTopbar = forwardRef((props, ref) => {
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } = useContext(LayoutContext);
@@ -18,23 +20,20 @@ const AppTopbar = forwardRef((props, ref) => {
     }));
     const overlayMenuItems = [
         {
-            label: 'Save',
-            icon: 'pi pi-save'
+            label: 'Profile',
+            icon: 'pi pi-user',
+            url: '/uikit/formlayout'
         },
         {
-            label: 'Update',
-            icon: 'pi pi-refresh'
-        },
-        {
-            label: 'Delete',
-            icon: 'pi pi-trash'
+            label: 'Change Password',
+            icon: 'pi pi-lock'
         },
         {
             separator: true
         },
         {
-            label: 'Home',
-            icon: 'pi pi-home'
+            label: 'Logout',
+            icon: 'pi pi-sign-out'
         }
     ];
     const toggleMenu = (event) => {
@@ -56,20 +55,16 @@ const AppTopbar = forwardRef((props, ref) => {
 
             <div ref={topbarmenuRef} className={classNames('layout-topbar-menu', { 'layout-topbar-menu-mobile-active': layoutState.profileSidebarVisible })}>
                 <button type="button" className="p-link layout-topbar-button">
-                    <i className="pi pi-bell"></i>
-                    <span>Calendar</span>
+                    <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '2rem' }}>
+                        <Badge value="2"></Badge>
+                    </i>
+                    <span>Notification</span>
                 </button>
                 <Menu ref={menu} model={overlayMenuItems} popup />
                 <button type="button" className="p-link layout-topbar-button" onClick={toggleMenu}>
-                    <i className="pi pi-user"></i>
+                    <i className="pi pi-cog" style={{ fontSize: '2rem' }}></i>
                     <span>Profile</span>
                 </button>
-                <Link href="/documentation">
-                    <button type="button" className="p-link layout-topbar-button">
-                        <i className="pi pi-cog"></i>
-                        <span>Settings</span>
-                    </button>
-                </Link>
             </div>
         </div>
     );
