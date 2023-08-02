@@ -26,7 +26,8 @@ const AppTopbar = forwardRef((props, ref) => {
         },
         {
             label: 'Change Password',
-            icon: 'pi pi-lock'
+            icon: 'pi pi-lock',
+            url: '/pages/changepassword'
         },
         {
             separator: true

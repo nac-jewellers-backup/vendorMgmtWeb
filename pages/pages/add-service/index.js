@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { v4 as uuid } from "uuid";
+import axios from 'axios';
 
 import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
@@ -13,18 +14,17 @@ import { Badge } from 'primereact/badge';
 import { classNames } from 'primereact/utils';
 import { FilterMatchMode } from 'primereact/api';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
-import { InputMask } from 'primereact/inputmask';
 
 
 const Admins = () => {
     const [userList, setUserList] = useState([{
         id: uuid(),
         userName: 'Brochure Design',
-        userMobile: ' Create Brouchure Deasing',
-        userEmail: 'Open/Close',
-        userRole: '01-03-2023',
-        userStatus: 'Active',
-        createdOn: 'Brouchure Card',
+        userMobile: 'BTD001',
+        // userEmail: 'ragujohn31@gmail.com',
+        // userRole: 'Super Admin',
+        // userStatus: 'Active',
+        // createdOn: '27-Jul-2023',
     }]);
     const adminRole = [
         { name: 'All', code: '' },
@@ -80,7 +80,7 @@ const Admins = () => {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
                     <h5 className="m-0">Add Service</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
-                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/newEnquiry')} />
+                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service/newService')} />
                     </span>
                 </div>
                 <hr />
@@ -114,26 +114,26 @@ const Admins = () => {
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
-                        <span className="p-float-label">
+                        {/* <span className="p-float-label">
                             <InputText
                                 keyfilter="email"
                                 className='w-full'
                                 autoComplete='off'
                             />
                             <label htmlFor="username">Search by Email</label>
-                        </span>
+                        </span> */}
                     </div>
                     <div className="field col-12 md:col-2">
-                        <span className="p-float-label">
+                        {/* <span className="p-float-label">
                             <Dropdown id="dropdown" options={adminRole} value={filters.userRole.value} onChange={(e) => setFilters({ ...filters, userRole: { value: e.target.value, matchMode: FilterMatchMode.EQUALS } })} optionLabel="name" className='w-full' />
                             <label htmlFor="dropdown">Select Role</label>
-                        </span>
+                        </span> */}
                     </div>
                     <div className="field col-12 md:col-2">
-                        <span className="p-float-label">
+                        {/* <span className="p-float-label">
                             <Dropdown id="dropdown" options={adminStatus} value={filters.userStatus.value} onChange={(e) => setFilters({ ...filters, userStatus: { value: e.target.value, matchMode: FilterMatchMode.EQUALS } })} optionLabel="name" className='w-full' />
                             <label htmlFor="dropdown">Select Status</label>
-                        </span>
+                        </span> */}
                     </div>
                     <div className="field col-12 md:col-2">
                         <Button icon="pi pi-times" severity="danger" className="mx-1 inline-block" style={{ width: '45%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
@@ -198,8 +198,8 @@ const Admins = () => {
             <>
                 <Toast ref={toast} />
                 <ConfirmDialog />
-                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/${rowData.id}`)} />
-                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/${rowData.id}`)} />
+                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-service/${rowData.id}`)} />
+                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-service/${rowData.id}`)} />
                 <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Admin" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
             </>
         )
@@ -296,19 +296,19 @@ const Admins = () => {
                     className='text-center' exportable={false}
                 />
                 <Column
-                    header='Title' headerStyle={{ 'minWidth': '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Service Name' headerStyle={{ 'minWidth': '60%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userName' filterField="userName" className='text-start'
                 />
                 <Column
-                    header='Description' headerStyle={{ width: '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='ID' headerStyle={{ width: '20%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userMobile' filterField="userMobile" className='text-end'
                 />
-                <Column
-                    header='Enquiry' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                {/* <Column
+                    header='EMail' headerStyle={{ width: '26%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userEmail' filterField="userEmail" className='text-start'
                 />
                 <Column
-                    header='Deadline' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Role' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userRole' filterField="userRole" className='text-center'
                 />
                 <Column
@@ -316,11 +316,11 @@ const Admins = () => {
                     field='userStatus' body={status} filterField="userStatus" className='text-center'
                 />
                 <Column
-                    header='Service' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Created On' headerStyle={{ width: '6%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='createdOn' filterField="createdOn" className='text-center'
-                />
+                /> */}
                 <Column
-                    header='Actions' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
+                    header='Actions' headerStyle={{ width: '20%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
                     body={actions} className='text-center' exportable={false}
                 />
             </DataTable>
