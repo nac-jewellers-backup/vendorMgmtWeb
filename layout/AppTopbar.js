@@ -19,11 +19,11 @@ const AppTopbar = forwardRef((props, ref) => {
         topbarmenubutton: topbarmenubuttonRef.current
     }));
     const overlayMenuItems = [
-        {
-            label: 'Profile',
-            icon: 'pi pi-user',
-            url: '/uikit/formlayout'
-        },
+        // {
+        //     label: 'Profile',
+        //     icon: 'pi pi-user',
+        //     url: '/uikit/formlayout'
+        // },
         {
             label: 'Change Password',
             icon: 'pi pi-lock',
@@ -34,7 +34,8 @@ const AppTopbar = forwardRef((props, ref) => {
         },
         {
             label: 'Logout',
-            icon: 'pi pi-sign-out'
+            icon: 'pi pi-sign-out',
+            url: '/'
         }
     ];
     const toggleMenu = (event) => {

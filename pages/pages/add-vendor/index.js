@@ -81,7 +81,7 @@ const Admins = () => {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
                     <h5 className="m-0">Vendor List</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
-                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-vendor/newVendor')} />
+                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Vendor" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-vendor/newVendor')} />
                     </span>
                 </div>
                 <hr />
@@ -125,16 +125,16 @@ const Admins = () => {
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
-                        <span className="p-float-label">
+                        {/* <span className="p-float-label">
                             <Dropdown id="dropdown" options={adminRole} value={filters.userRole.value} onChange={(e) => setFilters({ ...filters, userRole: { value: e.target.value, matchMode: FilterMatchMode.EQUALS } })} optionLabel="name" className='w-full' />
                             <label htmlFor="dropdown">Select Role</label>
-                        </span>
+                        </span> */}
                     </div>
                     <div className="field col-12 md:col-2">
-                        <span className="p-float-label">
+                        {/* <span className="p-float-label">
                             <Dropdown id="dropdown" options={adminStatus} value={filters.userStatus.value} onChange={(e) => setFilters({ ...filters, userStatus: { value: e.target.value, matchMode: FilterMatchMode.EQUALS } })} optionLabel="name" className='w-full' />
                             <label htmlFor="dropdown">Select Status</label>
-                        </span>
+                        </span> */}
                     </div>
                     <div className="field col-12 md:col-2">
                         <Button icon="pi pi-times" severity="danger" className="mx-1 inline-block" style={{ width: '70%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
@@ -199,9 +199,9 @@ const Admins = () => {
             <>
                 <Toast ref={toast} />
                 <ConfirmDialog />
-                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-vendor/${rowData.id}`)} />
-                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-vendor/${rowData.id}`)} />
-                <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Admin" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
+                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Vendor" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-vendor/view/${rowData.id}`)} />
+                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Vendor" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-vendor/${rowData.id}`)} />
+                <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Vendor" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
             </>
         )
     };

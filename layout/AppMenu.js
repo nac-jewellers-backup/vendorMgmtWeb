@@ -6,12 +6,13 @@ const AppMenu = () => {
     const model = [
         {
             items: [
-                { label: 'Enquiry List', icon: 'pi pi-fw pi-phone', to: '/', id: 'navEnquiry' },
+                { label: 'Enquiry List', icon: 'pi pi-fw pi-phone', to: '/pages/enquiry', id: 'navEnquiry' },
                 { label: 'Admin List', icon: 'pi pi-fw pi-user', to: '/pages/admin', id: 'navAdmin' },
                 { label: 'Service List', icon: 'pi pi-fw pi-briefcase', to: '/pages/add-service', id: 'navService' },
                 { label: 'Vendor List', icon: 'pi pi-fw pi-users', to: '/pages/add-vendor', id: 'navVendor' },
                 { label: 'Order List', icon: 'pi pi-fw pi-shopping-bag', to: '/pages/add-order', id: 'navOrder' },
                 { label: 'Payment List', icon: 'pi pi-fw pi-dollar', to: '/pages/add-payment', id: 'navPayment' }
+
             ]
         },
         {

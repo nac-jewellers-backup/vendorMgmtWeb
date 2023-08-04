@@ -80,7 +80,7 @@ const Admins = () => {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
                     <h5 className="m-0">Service List</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
-                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service/newService')} />
+                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Service" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service/newService')} />
                     </span>
                 </div>
                 <hr />
@@ -199,8 +199,8 @@ const Admins = () => {
                 <Toast ref={toast} />
                 <ConfirmDialog />
                 {/* <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-service/${rowData.id}`)} /> */}
-                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-service/${rowData.id}`)} />
-                <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Admin" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
+                <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Service" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-service/${rowData.id}`)} />
+                <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Service" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
             </>
         )
     };

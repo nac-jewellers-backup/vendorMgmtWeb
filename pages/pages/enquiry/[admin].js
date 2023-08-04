@@ -81,7 +81,7 @@ export default function Admin() {
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
                         <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
-                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/')} />
+                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/enquiry')} />
                     </span>
                 </div>
                 <hr />
@@ -103,35 +103,42 @@ export default function Admin() {
                     <div className="field col-12">
                     <span className="p-float-label">
                     <InputTextarea autoResize rows="3" cols="147" />
-                    <label htmlFor="userEmail">Address</label>
+                    <label htmlFor="userEmail">Description</label>
                     </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="userEmail"
-                                keyfilter="email"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={25}
-                                value={adminList.userEmail}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userEmail">Enquiry Status</label>
-                        </span>
                     </div>
                     
                     <div className="field col-12">
+                        <span className="p-float-label">
                         <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="" showIcon />
+                        <label htmlFor="userEmail">Deadline Date</label>
+                        </span>
                     </div>
 
-                    {admin != 'newEnquiry' ? <div className="field col-12">
+                    {admin != 'newEnquiry' ? <div className="field col-12 border-300 border-bottom-1">
+                    <h5>Enquiry Status</h5>
+                        <div className="grid">
+                            <div className="col-12 md:col-1">
+                                <div className="field-checkbox">
+                                    <Checkbox inputId="checkOption10" name="option" value="open" checked={checkboxValue.indexOf('open') !== -1} onChange={onCheckboxChange} />
+                                    <label htmlFor="checkOption10">Open</label>
+                                </div>
+                            </div>
+                            <div className="col-12 md:col-1">
+                                <div className="field-checkbox">
+                                    <Checkbox inputId="checkOption11" name="option" value="close" checked={checkboxValue.indexOf('close') !== -1} onChange={onCheckboxChange} />
+                                    <label htmlFor="checkOption11">Close</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div> : <></>}
+
+                    {admin != 'newEnquiry' ? <div className="field col-12 border-300 border-bottom-1">
                     <h5>Status</h5>
                         <div className="grid">
                             <div className="col-12 md:col-1">
                                 <div className="field-checkbox">
                                     <Checkbox inputId="checkOption8" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
-                                    <label htmlFor="checkOption9">Active</label>
+                                    <label htmlFor="checkOption8">Active</label>
                                 </div>
                             </div>
                             <div className="col-12 md:col-1">
@@ -143,7 +150,7 @@ export default function Admin() {
                         </div>
                     </div> : <></>}
                     
-                    <div className="field col-12">
+                    <div className="field col-12 border-300 border-bottom-1">
                         <h5>Service Category</h5>
                         <div className="grid">
                         <div className="col-12 md:col-1">
