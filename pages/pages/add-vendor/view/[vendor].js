@@ -1,16 +1,25 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuid } from "uuid";
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
-import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
 
 export default function Admin() {
+
+    const [userList, setUserList] = useState([{
+        id: uuid(),
+        userName: '1',
+        userMobile: 'Choose design elements (colors, fonts, and images) that match your brand personality and the tone and content of your brochure.',
+        userEmail: '80000',
+        userRole: '70000',
+        userStatus: '10000',
+    }]);
+    
     const [checkboxValue, setCheckboxValue] = useState([]);
     const router = useRouter();
     const { admin } = router.query;
@@ -74,19 +83,25 @@ export default function Admin() {
     }, []);
     
     return (
+        <>
         <form method='POST' onSubmit={handleSubmit}>
             <Toast ref={toast} />
             <div className='card'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
-                        <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
-                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-vendor')} />
+                        {/* <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/> */}
+                        <Button icon="pi pi-arrow-left" type="button" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-vendor')} />
                     </span>
                 </div>
                 <hr />
+
+                <div className='grid'>
+
+                </div>
                 <div className='mt-3'>
-                    <div className="field col-12">
+                 <div className='grid'>
+                    <div className="field col-5">
                         <span className="p-float-label">
                             <InputText
                                 id="shopName"
@@ -95,124 +110,12 @@ export default function Admin() {
                                 autoComplete='off'
                                 maxLength={50}
                                 value={adminList.shopName}
-                                onChange={handleChange}
+                                onChange={handleChange} readOnly
                             />
                             <label htmlFor="shopName">Shop Name</label>
                         </span>
                     </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="shopNumber"
-                                keyfilter="pint"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={10}
-                                value={adminList.shopNumber}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="shopNumber">Shop Contact Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="userEmail"
-                                keyfilter="email"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={25}
-                                value={adminList.userEmail}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userEmail">Email</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="contactPerson"
-                                keyfilter={/^[a-zA-Z ]*$/}
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={50}
-                                value={adminList.contactPerson}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="contactPerson">Contct Person</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="contactpersonNo"
-                                keyfilter="pint"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={10}
-                                value={adminList.contactpersonNo}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="contactpersonNo">Contact Person Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="panNumber"
-                                keyfilter={/^[a-zA-Z ]*$/}
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={50}
-                                value={adminList.panNumber}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="panNumber">Pan Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="tanNumber"
-                                keyfilter={/^[a-zA-Z ]*$/}
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={50}
-                                value={adminList.tanNumber}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="tanNumber">Tan Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="gstNumber"
-                                keyfilter={/^[a-zA-Z ]*$/}
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={50}
-                                value={adminList.gstNumber}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="gstNumber">GST Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="faxNumber"
-                                keyfilter={/^[a-zA-Z ]*$/}
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={50}
-                                value={adminList.faxNumber}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="faxNumber">Fax</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
+                    <div className="field col-5">
                         <span className="p-float-label">
                             <InputText
                                 id="shopAdress"
@@ -221,12 +124,126 @@ export default function Admin() {
                                 autoComplete='off'
                                 maxLength={50}
                                 value={adminList.shopAdress}
-                                onChange={handleChange}
+                                onChange={handleChange} readOnly
                             />
                             <label htmlFor="shopAdress">Shop Address</label>
                         </span>
                     </div>
-
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="shopNumber"
+                                keyfilter="pint"
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={10}
+                                value={adminList.shopNumber}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="shopNumber">Shop Contact Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="panNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.panNumber}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="panNumber">Pan Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="contactPerson"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.contactPerson}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="contactPerson">Contct Person</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="gstNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.gstNumber}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="gstNumber">GST Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="contactpersonNo"
+                                keyfilter="pint"
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={10}
+                                value={adminList.contactpersonNo}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="contactpersonNo">Contact Person Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="tanNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.tanNumber}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="tanNumber">Tan Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="userEmail"
+                                keyfilter="email"
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={25}
+                                value={adminList.userEmail}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="userEmail">Email</label>
+                        </span>
+                    </div>
+                                    
+                    <div className="field col-5">
+                        <span className="p-float-label">
+                            <InputText
+                                id="faxNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.faxNumber}
+                                onChange={handleChange} readOnly
+                            />
+                            <label htmlFor="faxNumber">Fax</label>
+                        </span>
+                    </div>
+                    
+                 </div>
                     {admin != 'newVendor' ? <div className="field col-12 border-300 border-bottom-1">
                         <h5>Status</h5>
                         <div className="grid">
@@ -295,5 +312,32 @@ export default function Admin() {
                 </div>
             </div>
         </form>
+        <h5>Vendor Order List summary</h5>
+        <DataTable
+        tableStyle={{ width: '100%' }} className='mb-4 datatable-responsive' scrollHeight="430px" size='small' scrollable showGridlines stripedRows paginator
+        dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort>
+            
+        <Column
+            header='S/No' headerStyle={{ 'minWidth': '5%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+            field='userName' filterField="userName" className='text-center'
+        />
+        <Column
+            header='Description' headerStyle={{ width: '65%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+            field='userMobile' filterField="userMobile" className='text-start'
+        />
+        <Column
+            header='Amount' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+            field='userEmail' filterField="userEmail" className='text-start'
+        />
+        <Column
+            header='Paid' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+            field='userRole' filterField="userRole" className='text-start'
+        />
+        <Column
+            header='Balance' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+            field='userStatus' filterField="userStatus" className='text-start'
+        />
+    </DataTable>
+        </>
     )
 }
