@@ -191,8 +191,8 @@ export default function Admin() {
                 <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>8000</span></p></div>
                 <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Balance Amount : <span>12000</span></p></div>
 
-                    <div className="field col-12 py-5 px-3">
-                    <h6>Payment Status</h6>
+                    <div className="field col-12 py-3 px-6">
+                    <h6>Payment Status :</h6>
                         <div className="grid">
                             <div className="col-12 md:col-1">
                                 <div className="field-checkbox">
@@ -210,10 +210,10 @@ export default function Admin() {
                     </div>
                     <div className="field col-12">
                     {/* <label htmlFor="qAttach">Qut.Attached</label> */}
-                        <span className="p-float-label">
+                        <span className="p-float-label px-3">
                         <div className="flex flex-wrap gap-2">
-                        <Button icon="pi pi-download" severity="success" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>
-                        <Button icon="pi pi-download" severity="success" tooltip='Invoice' tooltipOptions={{position:'top'}}></Button>
+                        <Button icon="pi pi-download" severity="success" type="button" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>
+                        <Button icon="pi pi-download" severity="success" type="button" tooltip='Invoice' tooltipOptions={{position:'top'}}></Button>
                         <Button label="Update Payment" icon="pi pi-dollar" type="button" severity="warning" onClick={openNew}></Button>
                         </div>
                         </span>
@@ -277,20 +277,20 @@ export default function Admin() {
              </div>
              {
                 dropdownValues==='Online'?
-                    <div className="field">
+                    <div className="field border-300 border-1 py-3 px-3">
                         <label htmlFor="name" class="product-badge status-instock"><span>Bank Name :</span></label>
                         <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus />
-                        {submitted && !product.name && <small >Name is required.</small>}
+                        {submitted && !product.name && <small >Bank Name is required.</small>}
                     </div>
                 :dropdownValues==='Cash'?
-                    <div className="field">
+                    <div className="field border-300 border-1 py-3 px-3">
                           <label htmlFor="name" class="product-badge status-instock">Payment Date :<span></span></label>
                           <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
                         {submitted && !product.name && <small >Date is required.</small>}
                     </div>
                 :dropdownValues==='Cheque'?
                 <>
-                <div className="grid border-300 border-bottom-1">
+                <div className="grid border-300 border-1 py-1 px-1">
                     <div className="field col-6">
                          <label htmlFor="name" class="product-badge status-instock">Payment Date <span></span></label>
                          <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
@@ -309,21 +309,21 @@ export default function Admin() {
                 </div>
                 </>
                 :dropdownValues==='DD'?
-                <div className="grid border-300 border-bottom-1">
+                <div className="grid border-300 border-1 py-1 px-1">
                 <div className="field col-6">
                      <label htmlFor="name" class="product-badge status-instock">Payment Date <span></span></label>
                      <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
+                    {submitted && !product.name && <small >DD Info is required.</small>}
                 </div>
                 <div className="field col-6">
                      <label htmlFor="name" class="product-badge status-instock">DD Date<span></span></label>
                      <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
+                    {submitted && !product.name && <small >DD Info is required.</small>}
                 </div>
                 <div className="field col-12">
                      {/* <label htmlFor="name" class="product-badge status-instock">Cheque No<span></span></label> */}
                      <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} placeholder="DD Number" required autoFocus />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
+                    {submitted && !product.name && <small >DD Info is required.</small>}
                 </div>
             </div>
                 :<></>

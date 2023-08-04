@@ -199,7 +199,7 @@ const Admins = () => {
             <>
                 <Toast ref={toast} />
                 <ConfirmDialog />
-                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Order" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/enquiry/view/view_enquiry/${rowData.id}`)} />
+                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Vendor Quotes" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/enquiry/view/view_enquiry/${rowData.id}`)} />
                 {/* <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/pages/add-order/${rowData.id}`)} /> */}
                 {/* <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Admin" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} /> */}
             </>

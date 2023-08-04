@@ -1,20 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { v4 as uuid } from "uuid";
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
 import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Dialog } from 'primereact/dialog';
+import { InputText } from 'primereact/inputtext';
 
-import { InputNumber } from 'primereact/inputnumber';
-import { Calendar } from 'primereact/calendar';
-import { Dropdown } from 'primereact/dropdown';
 
 
 export default function Admin() {
@@ -162,7 +154,7 @@ export default function Admin() {
     };
     useEffect(() => {
         document.title = page + ' | NAC Vendor';
-        document.getElementById('navOrder').classList.add('active-route');
+        document.getElementById('navEnquiry').classList.add('active-route');
     }, []);
 
     const paymentMethod = (event)=>{
@@ -171,44 +163,83 @@ export default function Admin() {
     }
     
     return (
-        <>
+    <>
         <form method='POST' onSubmit={handleSubmit}>
             <Toast ref={toast} />
             <div className='card'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
-                        {/* <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/> */}
+                        <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
                         {/* <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-order')} /> */}
                     </span>
                 </div>
                 <hr />
                 <div className='mt-3'>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Title : <span>Brouchure Design Pamphlet</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Description : <span>Create engaging digital brochure with ease. Grab readers' attention with FlippingBook.</span></p></div>                
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Due Date : <span>28-Aug-2023</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Vendor Name: <span>S&C Printers</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Quoted Amount : <span>12000</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Attachments : <span><Button icon="pi pi-download" severity="success" tooltip='Invoice' tooltipOptions={{position:'top'}}></Button></span></p></div>
-
-                    <div className="field col-12 py-5 px-3">                    
-                        <div className="grid">
-                        <p>Enquire Status : </p>
-                            <div className="col-12 md:col-1">
-                                <div className="field-checkbox">                                    
-                                    <Checkbox inputId="checkOption8" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
-                                    <label htmlFor="checkOption9">Accept</label>
-                                </div>
-                            </div>                            
-                            <button aria-label="Submit" class="p-button p-component"><span class="p-button-label p-c">Update</span></button>
-                        </div>
+                    <lable className='px-2'>Title</lable>
+                    <div className="field col-12 md:col-8">
+                            <InputText
+                                id="searchName"
+                                keyfilter={/^[^<>*!]+$/}
+                                className='w-full'
+                                autoComplete='off' placeholder="Brouchure Design Pamphlet"
+                               />
                     </div>
-                </div>
-            </div>
-        </form>
-    
+                    <lable className='px-2'>Description</lable>
+                    <div className="field col-12 md:col-8">
+                            <InputText
+                                id="searchName"
+                                keyfilter={/^[^<>*!]+$/}
+                                className='w-full'
+                                autoComplete='off' placeholder="Create engaging digital brochure with ease. Grab readers' attention with Flipping Book."
+                               />
+                    </div>
+                    <lable className='px-2'>Due Date</lable>
+                    <div className="field col-12 md:col-8">
+                            <InputText
+                                id="searchName"
+                                keyfilter={/^[^<>*!]+$/}
+                                className='w-full'
+                                autoComplete='off' placeholder="28-Aug-2023"
+                               />
+                    </div>
+                    <lable className='px-2'>Vendor Name</lable>
+                    <div className="field col-12 md:col-8">
+                            <InputText
+                                id="searchName"
+                                keyfilter={/^[^<>*!]+$/}
+                                className='w-full'
+                                autoComplete='off' placeholder="S&C Printers"
+                               />
+                    </div>
+                    <lable className='px-2'>Quoted Amount</lable>
+                    <div className="field col-12 md:col-8">
+                            <InputText
+                                id="searchName"
+                                keyfilter={/^[^<>*!]+$/}
+                                className='w-full'
+                                autoComplete='off' placeholder="12000"
+                               />
+                    </div>
 
-    
+                    <div className="grid px-2 p-0 border-300 border-1 w-5 ml-1 w-8">
+                    <div class="flex align-items-center py-0 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Attachments : <span></span></p></div>
+                        <div className="col-6 md:col-1 mt-0 px-3">                                   
+                            <Button icon="pi pi-download" type="button" className="" rounded severity="warning" Text />
+                        </div>  
+                        <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Enquire Status : <span></span></p></div>
+                        <div className="col-6 md:col-1 mt-3">
+                            <div className="field-checkbox px-1">                                    
+                                <Checkbox inputId="checkOption9" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
+                                <span htmlFor="checkOption9" class="product-badge status-instock py-1 ml-2">Accept</span>
+                            </div>
+                        </div> 
+                    </div>
+                
+                </div>
+                
+            </div>            
+        </form>
     </>
     )
         
