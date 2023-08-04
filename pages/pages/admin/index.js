@@ -136,8 +136,8 @@ const Admins = () => {
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
-                        <Button icon="pi pi-times" severity="danger" className="mx-1 inline-block" style={{ width: '45%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
-                        <Button icon="pi pi-upload" severity="help" className="mx-1 inline-block" style={{ width: '45%' }} onClick={exportExcel} disabled={selectedList.length === 0} tooltip="Export" tooltipOptions={{ position: 'top' }} />
+                        <Button icon="pi pi-times" severity="danger" className="mx-1 w-full inline-block" style={{ width: '45%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
+                        {/* <Button icon="pi pi-upload" severity="help" className="mx-1 inline-block" style={{ width: '45%' }} onClick={exportExcel} disabled={selectedList.length === 0} tooltip="Export" tooltipOptions={{ position: 'top' }} /> */}
                     </div>
                 </div>
             </div>
@@ -288,12 +288,7 @@ const Admins = () => {
                 tableStyle={{ width: '100%' }} className='mb-4 datatable-responsive' scrollHeight="430px" size='small' scrollable showGridlines stripedRows paginator
                 header={headerTemplate} filters={filters} loading={loaded} emptyMessage={emptyMessage} paginatorTemplate={footerTemplate}
                 dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort
-                ref={dt} selectionMode="checkbox" selection={selectedList} onSelectionChange={(e) => setSelectedList(e.value)}
             >
-                <Column
-                    selectionMode="multiple" headerStyle={{ width: '2%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
-                    className='text-center' exportable={false}
-                />
                 <Column
                     header='Name' headerStyle={{ 'minWidth': '40%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userName' filterField="userName" className='text-start'

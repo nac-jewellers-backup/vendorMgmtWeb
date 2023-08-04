@@ -80,7 +80,7 @@ const Admins = () => {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
                     <h5 className="m-0">Enquiry List</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
-                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Enquiry" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/enquiry/newEnquiry')} />
+                        <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Create Enquiry" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/enquiry/newEnquiry')} label={'Create Enquiry '}/>
                     </span>
                 </div>
                 <hr />
