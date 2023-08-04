@@ -23,7 +23,7 @@ const Admins = () => {
         description:'Paragraphs are the building blocks. Ultimately, a paragraph is a sentence or group of sentences that support one main id',
         userName: 'S&C Printers',
         quotedamount: '12000',
-        vendorattachment: 'File',
+        vendorattachment: <Button icon="pi pi-download" severity="success" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>,
         quotesstatus: 'Open',
         duedate: '04-Aug-2023'
     }]);
@@ -79,7 +79,7 @@ const Admins = () => {
         return (
             <div className='mx-2'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
-                    <h5 className="m-0">Order List</h5>
+                    <h5 className="m-0">Enquiry Made-To-Vendors</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
                         {/* <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-order/newOrder')} /> */}
                     </span>
@@ -308,7 +308,7 @@ const Admins = () => {
                     field='quotedamount' filterField="quotedamount" className='text-start'
                 />
                 <Column
-                    header='Vendor Attachment' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Quotation Attachment' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='vendorattachment' filterField="vendorattachment" className='text-start'
                 />
                 <Column
