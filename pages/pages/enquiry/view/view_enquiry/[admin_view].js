@@ -43,7 +43,7 @@ export default function Admin() {
             inventoryStatus: 'INSTOCK'
         };
         
-    const page = admin === 'newOrder' ? 'Add Order' : 'View Order';
+    const page = admin === 'newOrder' ? 'Add Order' : 'Vendor Quotes';
     const [value, setValue] = useState('');
     const [adminList, setAdminList] = useState({ id: uuid(), titleName: '', description: '', vendorName: '', orderDate: '', orderAmt: '', balancetAmt: ''});
     const toast = useRef(null);
@@ -185,150 +185,30 @@ export default function Admin() {
                 <hr />
                 <div className='mt-3'>
                 <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Title : <span>Brouchure Design Pamphlet</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Description : <span>Create engaging digital brochure with ease. Grab readers' attention with FlippingBook.</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Vendor : <span>info@brochureguru.com</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Date : <span>28/07/2023</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>8000</span></p></div>
-                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Balance Amount : <span>12000</span></p></div>
+                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Description : <span>Create engaging digital brochure with ease. Grab readers' attention with FlippingBook.</span></p></div>                
+                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Due Date : <span>28-Aug-2023</span></p></div>
+                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Vendor Name: <span>S&C Printers</span></p></div>
+                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Quoted Amount : <span>12000</span></p></div>
+                <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Attachments : <span><Button icon="pi pi-download" severity="success" tooltip='Invoice' tooltipOptions={{position:'top'}}></Button></span></p></div>
 
-                    <div className="field col-12 py-5 px-3">
-                    <h6>Payment Status</h6>
+                    <div className="field col-12 py-5 px-3">                    
                         <div className="grid">
+                        <p>Enquire Status : </p>
                             <div className="col-12 md:col-1">
-                                <div className="field-checkbox">
+                                <div className="field-checkbox">                                    
                                     <Checkbox inputId="checkOption8" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
-                                    <label htmlFor="checkOption9">Full</label>
+                                    <label htmlFor="checkOption9">Accept</label>
                                 </div>
-                            </div>
-                            <div className="col-12 md:col-1">
-                                <div className="field-checkbox">
-                                    <Checkbox inputId="checkOption9" name="option" value="inactive" checked={checkboxValue.indexOf('inactive') !== -1} onChange={onCheckboxChange} />
-                                    <label htmlFor="checkOption9">Partial</label>
-                                </div>
-                            </div>
+                            </div>                            
+                            <button aria-label="Submit" class="p-button p-component"><span class="p-button-label p-c">Update</span></button>
                         </div>
                     </div>
-                    <div className="field col-12">
-                    {/* <label htmlFor="qAttach">Qut.Attached</label> */}
-                        <span className="p-float-label">
-                        <div className="flex flex-wrap gap-2">
-                        <Button icon="pi pi-download" severity="success" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>
-                        <Button icon="pi pi-download" severity="success" tooltip='Invoice' tooltipOptions={{position:'top'}}></Button>
-                        <Button label="Update Payment" icon="pi pi-dollar" type="button" severity="warning" onClick={openNew}></Button>
-                        </div>
-                        </span>
-                    </div>
-
                 </div>
-                {/* <div className="field col-12 md:col-12 tex mt-2" style={{"text-align": "right;"}}>
-                 <Button label="Submit" className="p-button p-component w-2"></Button>
-                </div> */}
             </div>
         </form>
-    <DataTable
-        tableStyle={{ width: '100%' }} className='mb-4 datatable-responsive' scrollHeight="430px" size='small' scrollable showGridlines stripedRows paginator
-        dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort>
-            
-        <Column
-            header='S/No' headerStyle={{ 'minWidth': '5%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-            field='userName' filterField="userName" className='text-center'
-        />
-        <Column
-            header='Transaction ID' headerStyle={{ width: '25%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-            field='userMobile' filterField="userMobile" className='text-start'
-        />
-        <Column
-            header='Paid Amount' headerStyle={{ width: '25%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-            field='userEmail' filterField="userEmail" className='text-start'
-        />
-        <Column
-            header='Payment Date' headerStyle={{ width: '25%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-            field='userRole' filterField="userRole" className='text-start'
-        />
-        <Column
-            header='Mode Of Payment' headerStyle={{ width: '25%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-            field='userStatus' filterField="userStatus" className='text-start'
-        />
-    </DataTable>
+    
 
-    <Dialog visible={productDialog} style={{ width: '450px' }} header="Product Details" modal className="p-fluid" footer={productDialogFooter} onHide={hideDialog}>
-            <div className="field">
-                <label htmlFor="name">Transaction ID</label>
-                <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus />
-                {submitted && !product.name && <small >Name is required.</small>}
-            </div>
-            <div className="field">
-                <label htmlFor="name">Invoice No</label>
-                <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus />
-                {submitted && !product.name && <small >Name is required.</small>}
-            </div>  
-            <div className="field">
-                <label htmlFor="name">Amount Paid</label>
-                <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus />
-                {submitted && !product.name && <small >Name is required.</small>}
-            </div>
-            <div className="field">
-                <label htmlFor="calendar">Date</label>
-                <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-            </div>
-            <div className="field">
-                <label htmlFor="state">Mode Of Payment</label>
-                <Dropdown id="state" value={dropdownItem} onChange={paymentMethod} options={dropdownItems} optionLabel="name" placeholder="Select One"></Dropdown>
-             </div>
-             {
-                dropdownValues==='Online'?
-                    <div className="field">
-                        <label htmlFor="name" class="product-badge status-instock"><span>Bank Name :</span></label>
-                        <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} required autoFocus />
-                        {submitted && !product.name && <small >Name is required.</small>}
-                    </div>
-                :dropdownValues==='Cash'?
-                    <div className="field">
-                          <label htmlFor="name" class="product-badge status-instock">Payment Date :<span></span></label>
-                          <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                        {submitted && !product.name && <small >Date is required.</small>}
-                    </div>
-                :dropdownValues==='Cheque'?
-                <>
-                <div className="grid border-300 border-bottom-1">
-                    <div className="field col-6">
-                         <label htmlFor="name" class="product-badge status-instock">Payment Date <span></span></label>
-                         <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                        {submitted && !product.name && <small >Cheque Info is required.</small>}
-                    </div>
-                    <div className="field col-6">
-                         <label htmlFor="name" class="product-badge status-instock">Cheque Date<span></span></label>
-                         <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                        {submitted && !product.name && <small >Cheque Info is required.</small>}
-                    </div>
-                    <div className="field col-12">
-                         {/* <label htmlFor="name" class="product-badge status-instock">Cheque No<span></span></label> */}
-                         <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} placeholder="Cheque Number" required autoFocus />
-                        {submitted && !product.name && <small >Cheque Info is required.</small>}
-                    </div>
-                </div>
-                </>
-                :dropdownValues==='DD'?
-                <div className="grid border-300 border-bottom-1">
-                <div className="field col-6">
-                     <label htmlFor="name" class="product-badge status-instock">Payment Date <span></span></label>
-                     <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
-                </div>
-                <div className="field col-6">
-                     <label htmlFor="name" class="product-badge status-instock">DD Date<span></span></label>
-                     <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="invalid" showIcon />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
-                </div>
-                <div className="field col-12">
-                     {/* <label htmlFor="name" class="product-badge status-instock">Cheque No<span></span></label> */}
-                     <InputText id="name" value={product.name} onChange={(e) => onInputChange(e, 'name')} placeholder="DD Number" required autoFocus />
-                    {submitted && !product.name && <small >Cheque Info is required.</small>}
-                </div>
-            </div>
-                :<></>
-             }
-        </Dialog>
+    
     </>
     )
         

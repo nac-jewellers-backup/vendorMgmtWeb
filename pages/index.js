@@ -38,8 +38,8 @@ const LoginPage = () => {
 
                                     <div className="flex align-items-center justify-content-between mb-5 gap-5">
                                         <div className="flex align-items-center">
-                                            <Checkbox inputid="rememberme1" checked={checked} onChange={(e) => setChecked(e.checked)} className="mr-2"></Checkbox>
-                                            <label htmlFor="rememberme1">Remember me</label>
+                                            {/* <Checkbox inputid="rememberme1" checked={checked} onChange={(e) => setChecked(e.checked)} className="mr-2"></Checkbox>
+                                            <label htmlFor="rememberme1">Remember me</label> */}
                                         </div>
                                         <a className="font-medium no-underline ml-2 text-right cursor-pointer" style={{ color: 'var(--primary-color)' }} onClick={() => router.push('/pages/forgot_password')}>
                                             Forgot password?

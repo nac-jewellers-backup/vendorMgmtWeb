@@ -19,13 +19,13 @@ import { InputMask } from 'primereact/inputmask';
 const Admins = () => {
     const [userList, setUserList] = useState([{
         id: uuid(),
+        title: 'Test Title',
+        description:'Paragraphs are the building blocks. Ultimately, a paragraph is a sentence or group of sentences that support one main id',
         userName: 'S&C Printers',
-        userMobile: '8438966839',
-        userEmail: 's&c@gmail.com',
-        userRole: 'Praveen',
-        userStatus: '004-9856748',
-        createdOn: 'BLDBPR7765L',
-        createdOn2: 'PDES03028F',
+        quotedamount: '12000',
+        vendorattachment: <Button icon="pi pi-download" severity="success" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>,
+        quotesstatus: 'Open',
+        duedate: '04-Aug-2023'
     }]);
     const adminRole = [
         { name: 'All', code: '' },
@@ -79,7 +79,7 @@ const Admins = () => {
         return (
             <div className='mx-2'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
-                    <h5 className="m-0">Order List</h5>
+                    <h5 className="m-0">Enquiry Made-To-Vendors</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
                         {/* <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-order/newOrder')} /> */}
                     </span>
@@ -97,7 +97,7 @@ const Admins = () => {
                                 onChange={(e) => setFilters({ ...filters, userName: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                                 onKeyDown={(e) => setFilters({ ...filters, userName: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                             />
-                            <label htmlFor="searchName">Search by vendor Name</label>
+                            <label htmlFor="searchName">Search by Title</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -111,7 +111,7 @@ const Admins = () => {
                                 onChange={(e) => setFilters({ ...filters, userMobile: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                                 onKeyDown={(e) => setFilters({ ...filters, userMobile: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                             />
-                            <label htmlFor="username">Search shop contact</label>
+                            <label htmlFor="username">Search by Vendor Name</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -121,7 +121,7 @@ const Admins = () => {
                                 className='w-full'
                                 autoComplete='off'
                             />
-                            <label htmlFor="username">Search by Email</label>
+                            <label htmlFor="username">Search by Quotes Status</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -292,32 +292,32 @@ const Admins = () => {
                 dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort
             >
                 <Column
-                    header='Vendor Name' headerStyle={{ 'minWidth': '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Title' headerStyle={{ width: '20%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='title' filterField="title" className='text-start'
+                />
+                <Column
+                    header='Description' headerStyle={{ width: '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='description' filterField="description" className='text-start'
+                />
+                <Column
+                    header='Vendor Name' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userName' filterField="userName" className='text-start'
                 />
                 <Column
-                    header='Shop contact No' headerStyle={{ width: '5%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userMobile' filterField="userMobile" className='text-start'
+                    header='Quoted amount' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='quotedamount' filterField="quotedamount" className='text-start'
                 />
                 <Column
-                    header='Email' headerStyle={{ width: '15%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userEmail' filterField="userEmail" className='text-start'
+                    header='Quotation Attachment' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='vendorattachment' filterField="vendorattachment" className='text-start'
                 />
                 <Column
-                    header='Contact person' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userRole' filterField="userRole" className='text-start'
+                    header='Quotes Status' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='quotesstatus' filterField="quotesstatus" className='text-start'
                 />
                 <Column
-                    header='Contct Person No' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userStatus' filterField="userStatus" className='text-start'
-                />
-                <Column
-                    header='Pan Number' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='createdOn' filterField="createdOn" className='text-start'
-                />
-                <Column
-                    header='Tan Number' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='createdOn2' filterField="createdOn2" className='text-start'
+                    header='Dur Date' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='duedate' filterField="duedate" className='text-start'
                 />
                 <Column
                     header='Actions' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
