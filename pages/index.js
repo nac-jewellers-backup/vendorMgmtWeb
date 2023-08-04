@@ -78,7 +78,7 @@ const Admins = () => {
         return (
             <div className='mx-2'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center mt-1">
-                    <h5 className="m-0">Add Service</h5>
+                    <h5 className="m-0">Enquiry List</h5>
                     <span className="block mt-2 md:mt-0 p-input-icon-left">
                         <Button icon="pi pi-plus" severity="success" className="mr-2" tooltip="Add Admin" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/newEnquiry')} />
                     </span>
@@ -96,7 +96,7 @@ const Admins = () => {
                                 onChange={(e) => setFilters({ ...filters, userName: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                                 onKeyDown={(e) => setFilters({ ...filters, userName: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                             />
-                            <label htmlFor="searchName">Search by Service Name</label>
+                            <label htmlFor="searchName">Search by Title</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -110,7 +110,7 @@ const Admins = () => {
                                 onChange={(e) => setFilters({ ...filters, userMobile: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                                 onKeyDown={(e) => setFilters({ ...filters, userMobile: { value: e.target.value, matchMode: FilterMatchMode.CONTAINS } })}
                             />
-                            <label htmlFor="username">Search by ID</label>
+                            <label htmlFor="username">Search by Description</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -120,13 +120,17 @@ const Admins = () => {
                                 className='w-full'
                                 autoComplete='off'
                             />
-                            <label htmlFor="username">Search by Email</label>
+                            <label htmlFor="username">Search by Enquiry</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
                         <span className="p-float-label">
-                            <Dropdown id="dropdown" options={adminRole} value={filters.userRole.value} onChange={(e) => setFilters({ ...filters, userRole: { value: e.target.value, matchMode: FilterMatchMode.EQUALS } })} optionLabel="name" className='w-full' />
-                            <label htmlFor="dropdown">Select Role</label>
+                            <InputText
+                                keyfilter="email"
+                                className='w-full'
+                                autoComplete='off'
+                            />
+                            <label htmlFor="username">Search by Deadline</label>
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
@@ -136,8 +140,8 @@ const Admins = () => {
                         </span>
                     </div>
                     <div className="field col-12 md:col-2">
-                        <Button icon="pi pi-times" severity="danger" className="mx-1 inline-block" style={{ width: '45%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
-                        <Button icon="pi pi-upload" severity="help" className="mx-1 inline-block" style={{ width: '45%' }} onClick={exportExcel} disabled={selectedList.length === 0} tooltip="Export" tooltipOptions={{ position: 'top' }} />
+                        <Button icon="pi pi-times" severity="danger" className="mx-1 inline-block" style={{ width: '70%' }} onClick={() => initFilters()} tooltip="Clear Search" tooltipOptions={{ position: 'top' }} />
+                        {/* <Button icon="pi pi-upload" severity="help" className="mx-1 inline-block" style={{ width: '45%' }} onClick={exportExcel} disabled={selectedList.length === 0} tooltip="Export" tooltipOptions={{ position: 'top' }} /> */}
                     </div>
                 </div>
             </div>
@@ -198,7 +202,7 @@ const Admins = () => {
             <>
                 <Toast ref={toast} />
                 <ConfirmDialog />
-                <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/${rowData.id}`)} />
+                {/* <Button icon="pi pi-eye" severity="success" className="mr-1 w-auto h-auto" tooltip="View Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/${rowData.id}`)} /> */}
                 <Button icon="pi pi-pencil" severity="primary" className="mr-1 w-auto h-auto" tooltip="Edit Admin" tooltipOptions={{ position: 'top' }} text onClick={() => router.push(`/${rowData.id}`)} />
                 <Button icon="pi pi-trash" severity="danger" className="ml-1 w-auto h-auto" tooltip="Delete Admin" tooltipOptions={{ position: 'top' }} text onClick={() => confirm(rowData.id)} />
             </>
@@ -289,12 +293,7 @@ const Admins = () => {
                 tableStyle={{ width: '100%' }} className='mb-4 datatable-responsive' scrollHeight="430px" size='small' scrollable showGridlines stripedRows paginator
                 header={headerTemplate} filters={filters} loading={loaded} emptyMessage={emptyMessage} paginatorTemplate={footerTemplate}
                 dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort
-                ref={dt} selectionMode="checkbox" selection={selectedList} onSelectionChange={(e) => setSelectedList(e.value)}
             >
-                <Column
-                    selectionMode="multiple" headerStyle={{ width: '2%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
-                    className='text-center' exportable={false}
-                />
                 <Column
                     header='Title' headerStyle={{ 'minWidth': '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='userName' filterField="userName" className='text-start'

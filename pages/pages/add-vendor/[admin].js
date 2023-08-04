@@ -9,16 +9,14 @@ import { Divider } from 'primereact/divider';
 import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
-import { Calendar } from 'primereact/calendar';
-import { InputTextarea } from 'primereact/inputtextarea';
 
 export default function Admin() {
     const [checkboxValue, setCheckboxValue] = useState([]);
     const router = useRouter();
     const { admin } = router.query;
-    const page = admin ==='newEnquiry' ? 'Add Enquiry' : 'Edit Enquiry';
+    const page = admin === 'newVendor' ? 'Add Vendor' : 'Edit Vendor';
     const [value, setValue] = useState('');
-    const [adminList, setAdminList] = useState({ id: uuid(), userName: '', userPassword: '', userMobile: '', userEmail: '', userRole: '', userStatus: '', createdOn: '' });
+    const [adminList, setAdminList] = useState({ id: uuid(), shopName: '', shopNumber: '', userEmail: '', contactPerson: '', contactpersonNo: '', panNumber: '', tanNumber: '', gstNumber: '', faxNumber: '', shopAdress: '' });
     const toast = useRef(null);
     const adminRole = [
         { name: 'Super Admin', code: 'Super Admin' },
@@ -42,8 +40,6 @@ export default function Admin() {
         </>
     );
 
-    const [value3, setValue3] = useState('');
-
     const onCheckboxChange = (e) => {
         let selectedValue = [...checkboxValue];
         if (e.checked) selectedValue.push(e.value);
@@ -61,16 +57,20 @@ export default function Admin() {
     };
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (!adminList.userName) { toastAlert('Enter User Name'); }
-        else if (!adminList.userMobile) { toastAlert('Enter Mobile Number'); }
-        else if (!adminList.userMobile.length !== 10 ) { toastAlert('Enter Valid Mobile Number'); }
+        if (!adminList.shopName) { toastAlert('Enter User Shop Name'); }
+        else if (!adminList.shopNumber) { toastAlert('Enter Shop Contact No'); }
         else if (!adminList.userEmail) { toastAlert('Enter EMail Address'); }
-        else if (!adminList.userRole) { toastAlert('Select Role'); }
-        else if (!adminList.userStatus) { toastAlert('Select Status'); }
+        else if (!adminList.contactPerson) { toastAlert('Enter Contact Person Name'); }
+        else if (!adminList.contactpersonNo) { toastAlert('Enter Contact Person No'); } 
+        else if (!adminList.panNumber) { toastAlert('Enter Pan No'); } 
+        else if (!adminList.tanNumber) { toastAlert('Enter Tan No'); }
+        else if (!adminList.gstNumber) { toastAlert('Enter GST No'); } 
+        else if (!adminList.faxNumber) { toastAlert('Enter Fax No'); }
+        else if (!adminList.shopAdress) { toastAlert('Enter Shop Adress'); }
     };
     useEffect(() => {
         document.title = page + ' | NAC Vendor';
-        document.getElementById('navEnquiry').classList.add('active-route');
+        document.getElementById('navVendor').classList.add('active-route');
     }, []);
     
     return (
@@ -81,7 +81,7 @@ export default function Admin() {
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
                         <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
-                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/')} />
+                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-vendor')} />
                     </span>
                 </div>
                 <hr />
@@ -89,22 +89,30 @@ export default function Admin() {
                     <div className="field col-12">
                         <span className="p-float-label">
                             <InputText
-                                id="userName"
+                                id="shopName"
                                 keyfilter={/^[a-zA-Z ]*$/}
                                 className='w-full'
                                 autoComplete='off'
                                 maxLength={50}
-                                value={adminList.userName}
+                                value={adminList.shopName}
                                 onChange={handleChange}
                             />
-                            <label htmlFor="userName">Title</label>
+                            <label htmlFor="shopName">Shop Name</label>
                         </span>
                     </div>
                     <div className="field col-12">
-                    <span className="p-float-label">
-                    <InputTextarea autoResize rows="3" cols="147" />
-                    <label htmlFor="userEmail">Address</label>
-                    </span>
+                        <span className="p-float-label">
+                            <InputText
+                                id="shopNumber"
+                                keyfilter="pint"
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={10}
+                                value={adminList.shopNumber}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="shopNumber">Shop Contact Number</label>
+                        </span>
                     </div>
                     <div className="field col-12">
                         <span className="p-float-label">
@@ -117,15 +125,109 @@ export default function Admin() {
                                 value={adminList.userEmail}
                                 onChange={handleChange}
                             />
-                            <label htmlFor="userEmail">Enquiry Status</label>
+                            <label htmlFor="userEmail">Email</label>
                         </span>
                     </div>
-                    
                     <div className="field col-12">
-                        <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="" showIcon />
+                        <span className="p-float-label">
+                            <InputText
+                                id="contactPerson"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.contactPerson}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="contactPerson">Contct Person</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="contactpersonNo"
+                                keyfilter="pint"
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={10}
+                                value={adminList.contactpersonNo}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="contactpersonNo">Contact Person Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="panNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.panNumber}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="panNumber">Pan Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="tanNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.tanNumber}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="tanNumber">Tan Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="gstNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.gstNumber}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="gstNumber">GST Number</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="faxNumber"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.faxNumber}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="faxNumber">Fax</label>
+                        </span>
+                    </div>
+                    <div className="field col-12">
+                        <span className="p-float-label">
+                            <InputText
+                                id="shopAdress"
+                                keyfilter={/^[a-zA-Z ]*$/}
+                                className='w-full'
+                                autoComplete='off'
+                                maxLength={50}
+                                value={adminList.shopAdress}
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="shopAdress">Shop Address</label>
+                        </span>
                     </div>
 
-                    {admin != 'newEnquiry' ? <div className="field col-12">
+                    <div className="field col-12">
                     <h5>Status</h5>
                         <div className="grid">
                             <div className="col-12 md:col-1">
@@ -141,8 +243,8 @@ export default function Admin() {
                                 </div>
                             </div>
                         </div>
-                    </div> : <></>}
-                    
+                    </div>
+
                     <div className="field col-12">
                         <h5>Service Category</h5>
                         <div className="grid">
@@ -167,7 +269,7 @@ export default function Admin() {
                         <div className="col-12 md:col-1">
                             <div className="field-checkbox">
                                 <Checkbox inputId="checkOption4" name="option" value="Carry Bag" checked={checkboxValue.indexOf('Carry Bag') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption4">Carry Bag</label>
+                                <label htmlFor="checkOption4">CarryBag</label>
                             </div>
                         </div>
                         <div className="col-12 md:col-1">

@@ -12,7 +12,7 @@ import { Toast } from 'primereact/toast';
 export default function Admin() {
     const router = useRouter();
     const { admin } = router.query;
-    const page = admin === 'newService' ? 'Add Admin' : 'Edit Admin';
+    const page = admin === 'newService' ? 'Add Service' : 'Edit Service';
     const [value, setValue] = useState('');
     const [adminList, setAdminList] = useState({ id: uuid(), userName: '', userPassword: '', userMobile: '', userEmail: '', userRole: '', userStatus: '', createdOn: '' });
     const toast = useRef(null);
@@ -64,7 +64,7 @@ export default function Admin() {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
-                        {/* <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/> */}
+                        <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
                         <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service')} />
                     </span>
                 </div>
@@ -154,9 +154,6 @@ export default function Admin() {
                             <label htmlFor="userStatus">Select Status</label>
                         </span>
                     </div> */}
-                </div>
-                <div className="field col-12 md:col-12 tex mt-2" style={{"text-align": "right;"}}>
-                 <Button label="Submit" className="p-button p-component w-2"></Button>
                 </div>
             </div>
         </form>
