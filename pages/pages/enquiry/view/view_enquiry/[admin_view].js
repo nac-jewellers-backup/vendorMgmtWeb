@@ -6,6 +6,7 @@ import { Divider } from 'primereact/divider';
 import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
 import { InputText } from 'primereact/inputtext';
+import { Tag } from 'primereact/tag';
 
 
 
@@ -222,7 +223,7 @@ export default function Admin() {
                                />
                     </div>
 
-                    <div className="grid px-2 p-0 border-300 border-1 w-5 ml-1 w-8">
+                    <div className="grid px-2 p-0 border-300 border-2 w-5 ml-1 w-8">
                     <div class="flex align-items-center py-0 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Attachments : <span></span></p></div>
                         <div className="col-6 md:col-1 mt-0 px-3">                                   
                             <Button icon="pi pi-download" type="button" className="" rounded severity="warning" Text />
@@ -231,7 +232,7 @@ export default function Admin() {
                         <div className="col-6 md:col-1 mt-3">
                             <div className="field-checkbox px-1">                                    
                                 <Checkbox inputId="checkOption9" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
-                                <span htmlFor="checkOption9" class="product-badge status-instock py-1 ml-2">Accept</span>
+                                <span htmlFor="checkOption9" className="status-instock font-bold py-2 ml-2" >Accept</span>
                             </div>
                         </div> 
                     </div>
