@@ -203,7 +203,7 @@ const Admins = () => {
         )
     };
     const emptyMessage = () => {
-        return <h5 className='text-center pt-1' style={{ fontSize: '1em' }}>No Admin to Display</h5>
+        return <h5 className='text-center pt-1' style={{ fontSize: '1em' }}>No Payment to Display</h5>
     };
     const footerTemplate = {
         layout: 'RowsPerPageDropdown CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink',
@@ -217,7 +217,7 @@ const Admins = () => {
             );
         },
         CurrentPageReport: (options) => {
-            const name = (options.totalRecords > 1) ? 'Admins' : 'Admin'
+            const name = (options.totalRecords > 1) ? 'Payments' : 'Payment'
             return (
                 <div className='center_item'>
                     <span style={{ color: 'var(--text-color)', userSelect: 'none', width: 'auto', textAlign: 'center' }}>
