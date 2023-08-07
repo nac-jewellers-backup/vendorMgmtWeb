@@ -188,7 +188,11 @@ export default function Admin() {
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Vendor : <span>info@brochureguru.com</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Date : <span>28/07/2023</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Invoice Number : <span>INV00458</span></p></div>
-                        <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>18000</span></p></div>
+                        <div className='grid'>
+                           <div className="flex align-items-center py-2 px-4 col-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>18000</span></p></div>
+                           <Button className="col-1 mr-3" icon="pi pi-download" severity="success" type="button" tooltip='Quotation' tooltipOptions={{ position: 'top' }}></Button>
+                           <Button className="col-1" icon="pi pi-download" severity="success" type="button" tooltip='Invoice' tooltipOptions={{ position: 'top' }}></Button>
+                        </div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Paid Amount : <span>6000</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Balance Amount : <span>12000</span></p></div>
                         <div className="field col-12 py-3 px-6">
@@ -209,16 +213,12 @@ export default function Admin() {
                             </div>
                         </div>
                         <div className="field col-12">
-                            <span className="p-float-label px-3">
+                            <span className="p-float-label px-4">
                                 <div className="flex flex-wrap gap-2">
-                                    <h5 className="m-0">Downloads</h5>
-                                    <Divider />
-                                    <Button icon="pi pi-download" severity="success" type="button" tooltip='Quotation' tooltipOptions={{ position: 'top' }}></Button>
-                                    <Button icon="pi pi-download" severity="success" type="button" tooltip='Invoice' tooltipOptions={{ position: 'top' }}></Button>
-                                    <Divider />
-                                    <h5 className="m-0">Payment Details</h5>
+                                    <h5 className="m-0">Payment Details :</h5>
                                     <Divider />
                                     <Button label="Update Payment" icon="pi pi-dollar" type="button" severity="warning" onClick={openNew}></Button>
+                                    <Divider />                              
                                 </div>
                             </span>
                         </div>

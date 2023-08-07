@@ -111,7 +111,7 @@ export default function Admin() {
                                 value={adminList.shopNumber}
                                 onChange={handleChange}
                             />
-                            <label htmlFor="shopNumber">Shop Contact Number</label>
+                            <label htmlFor="shopNumber">Contact Number</label>
                         </span>
                     </div>
                     <div className="field col-12">

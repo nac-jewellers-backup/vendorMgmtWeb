@@ -26,6 +26,7 @@ const Admins = () => {
         userStatus: '004-9856748',
         createdOn: 'BLDBPR7765L',
         createdOn2: 'PDES03028F',
+        createdOn3: 'www.Enquiry_Details.com',
     }]);
     const adminRole = [
         { name: 'All', code: '' },
@@ -318,6 +319,10 @@ const Admins = () => {
                 <Column
                     header='Tan Number' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='createdOn2' filterField="createdOn2" className='text-start'
+                />
+                <Column
+                    header='Enquiry Link' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='createdOn3' filterField="createdOn3" className='text-start'
                 />
                 <Column
                     header='Actions' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}

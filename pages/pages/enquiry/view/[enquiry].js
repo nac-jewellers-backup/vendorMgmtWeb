@@ -23,6 +23,7 @@ const Admins = () => {
         description:'Paragraphs are the building blocks. Ultimately, a paragraph is a sentence or group of sentences that support one main id',
         userName: 'S&C Printers',
         quotedamount: '12000',
+        quotedcount: '10',
         vendorattachment: <Button icon="pi pi-download" severity="success" tooltip='Quotation' tooltipOptions={{position:'top'}}></Button>,
         quotesstatus: 'Open',
         duedate: '04-Aug-2023'
@@ -308,6 +309,10 @@ const Admins = () => {
                     field='quotedamount' filterField="quotedamount" className='text-start'
                 />
                 <Column
+                    header='Quoted Count' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='quotedcount' filterField="quotedcount" className='text-start'
+                />
+                <Column
                     header='Quotation Attachment' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='vendorattachment' filterField="vendorattachment" className='text-start'
                 />
@@ -316,7 +321,7 @@ const Admins = () => {
                     field='quotesstatus' filterField="quotesstatus" className='text-start'
                 />
                 <Column
-                    header='Dur Date' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    header='Due Date' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
                     field='duedate' filterField="duedate" className='text-start'
                 />
                 <Column

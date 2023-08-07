@@ -7,6 +7,8 @@ import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
 import { InputText } from 'primereact/inputtext';
 import { Tag } from 'primereact/tag';
+import { Calendar } from 'primereact/calendar';
+import { InputTextarea } from 'primereact/inputtextarea';   
 
 
 
@@ -171,7 +173,7 @@ export default function Admin() {
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
                     <h5 className="m-0">{page}</h5>
                     <span className="block md:mt-0 p-input-icon-left">
-                        <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
+                        {/* <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/> */}
                         {/* <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-order')} /> */}
                     </span>
                 </div>
@@ -181,28 +183,19 @@ export default function Admin() {
                     <div className="field col-12 md:col-8">
                             <InputText
                                 id="searchName"
-                                keyfilter={/^[^<>*!]+$/}
+                                keyfilter={/^[a-zA-Z ]*$/}
                                 className='w-full'
                                 autoComplete='off' placeholder="Brouchure Design Pamphlet"
                                />
                     </div>
                     <lable className='px-2'>Description</lable>
                     <div className="field col-12 md:col-8">
-                            <InputText
-                                id="searchName"
-                                keyfilter={/^[^<>*!]+$/}
-                                className='w-full'
-                                autoComplete='off' placeholder="Create engaging digital brochure with ease. Grab readers' attention with Flipping Book."
-                               />
-                    </div>
-                    <lable className='px-2'>Due Date</lable>
-                    <div className="field col-12 md:col-8">
-                            <InputText
-                                id="searchName"
-                                keyfilter={/^[^<>*!]+$/}
-                                className='w-full'
-                                autoComplete='off' placeholder="28-Aug-2023"
-                               />
+                        <InputTextarea autoResize rows="3" cols="147"
+                            id="searchName"
+                            keyfilter={/^[^<>*!]+$/}
+                            className='w-full'
+                            autoComplete='off' placeholder="Create engaging digital brochure with ease. Grab readers' attention with Flipping Book."
+                            />
                     </div>
                     <lable className='px-2'>Vendor Name</lable>
                     <div className="field col-12 md:col-8">
@@ -215,17 +208,20 @@ export default function Admin() {
                     </div>
                     <lable className='px-2'>Quoted Amount</lable>
                     <div className="field col-12 md:col-8">
-                            <InputText
+                               <InputText
                                 id="searchName"
-                                keyfilter={/^[^<>*!]+$/}
+                                keyfilter="pint"
                                 className='w-full'
-                                autoComplete='off' placeholder="12000"
-                               />
+                                autoComplete='off'
+                                maxLength={10}
+                                value={adminList.contactpersonNo}
+                                onChange={handleChange}
+                            />
                     </div>
-
-                    <div className="grid px-2 p-0 border-300 border-2 w-5 ml-1 w-8">
+                    
+                    <div className="grid px-2 p-0 border-300 border-1 w-5 ml-1 w-8">
                     <div class="flex align-items-center py-0 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Attachments : <span></span></p></div>
-                        <div className="col-6 md:col-1 mt-0 px-3">                                   
+                        <div className="col-6 md:col-1 mt-2 px-3">                                   
                             <Button icon="pi pi-download" type="button" className="" rounded severity="warning" Text />
                         </div>  
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Enquire Status : <span></span></p></div>
@@ -236,9 +232,14 @@ export default function Admin() {
                             </div>
                         </div> 
                     </div>
-                
+                    <div className="grid flex-column">
+                        <lable className='px-2 mt-5'>Due Date</lable>
+                        <div className="field col-12 md:col-8">
+                                <Calendar inputId="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="w-4" showIcon />
+                                <Button label="Secondary" severity="primary" className='w-4 ml-6'/>
+                        </div>
+                    </div>
                 </div>
-                
             </div>            
         </form>
     </>
