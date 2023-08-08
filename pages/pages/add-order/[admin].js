@@ -187,11 +187,15 @@ export default function Admin() {
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Description : <span>Create engaging digital brochure with ease. Grab readers' attention with FlippingBook.</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Vendor : <span>info@brochureguru.com</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Date : <span>28/07/2023</span></p></div>
-                        <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Invoice Number : <span>INV00458</span></p></div>
                         <div className='grid'>
-                           <div className="flex align-items-center py-2 px-4 col-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>18000</span></p></div>
-                           <Button className="col-1 mr-3" icon="pi pi-download" severity="success" type="button" tooltip='Quotation' tooltipOptions={{ position: 'top' }}></Button>
-                           <Button className="col-1" icon="pi pi-download" severity="success" type="button" tooltip='Invoice' tooltipOptions={{ position: 'top' }}></Button>
+                            <div class="flex align-items-center py-2 px-3 px-4 col-3 mt-2"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Invoice Number : <span>INV00458</span></p></div>
+                            {/* <Button className="col-1" icon="pi pi-download" severity="success" type="button" tooltip='Invoice' tooltipOptions={{ position: 'top' }}></Button>    */}
+                            <Button icon="pi pi-download" className="col-1 mt-2" severity="info" type="button" tooltip='Invoice' outlined />
+                        </div>
+                        <div className='grid'>
+                           <div className="flex align-items-center py-2 px-4 col-3 mt-2"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Order Amount : <span>18000</span></p></div>
+                           {/* <Button className="col-1 mr-3" icon="pi pi-download" severity="success" type="button" tooltip='Quotation' tooltipOptions={{ position: 'top' }}></Button> */}
+                           <Button icon="pi pi-download" className="col-1 mt-3" severity="info" type="button" tooltip='Quotation' outlined />
                         </div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Paid Amount : <span>6000</span></p></div>
                         <div class="flex align-items-center py-2 px-3"><i class="pi pi-fw pi-info-circle mr-2 text-1xl"></i><p class="m-0 text-lg">Balance Amount : <span>12000</span></p></div>
@@ -201,12 +205,12 @@ export default function Admin() {
                                 <div className="col-12 md:col-1">
                                     <div className="field-checkbox">
                                         <Checkbox inputId="checkOption8" name="option" value="active" checked={checkboxValue.indexOf('active') !== -1} onChange={onCheckboxChange} />
-                                        <label htmlFor="checkOption9">Full</label>
+                                        <label htmlFor="checkOption8">Full</label>
                                     </div>
                                 </div>
                                 <div className="col-12 md:col-1">
                                     <div className="field-checkbox">
-                                        <Checkbox inputId="checkOption9" name="option" value="inactive" checked={true} onChange={onCheckboxChange} />
+                                        <Checkbox inputId="checkOption9" name="option" value="inactive" checked={checkboxValue.indexOf('inactive') !== -1} onChange={onCheckboxChange} />
                                         <label htmlFor="checkOption9">Partial</label>
                                     </div>
                                 </div>

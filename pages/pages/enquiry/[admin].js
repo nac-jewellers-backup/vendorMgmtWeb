@@ -4,30 +4,42 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
-import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
 import { Checkbox } from 'primereact/checkbox';
 import { Calendar } from 'primereact/calendar';
 import { InputTextarea } from 'primereact/inputtextarea';
+import { PickList } from 'primereact/picklist';
 
 export default function Admin() {
+    const [selectedServices, setSelectedServices] = useState([]);
+    const [vendor, setVendor] = useState(false);
     const [checkboxValue, setCheckboxValue] = useState([]);
+
+    const onCategoryChange = (e) => {
+        let _selectedServices = [...selectedServices];        
+        if (e.checked)
+            _selectedServices.push(e.value);
+        else
+            _selectedServices = _selectedServices.filter(service => service.key !== e.value.key);
+            setSelectedServices(_selectedServices);
+            (_selectedServices.length<0)?setVendor(false):setVendor(false)
+    };
     const router = useRouter();
     const { admin } = router.query;
     const page = admin ==='newEnquiry' ? 'Add Enquiry' : 'Edit Enquiry';
     const [value, setValue] = useState('');
     const [adminList, setAdminList] = useState({ id: uuid(), userName: '', userPassword: '', userMobile: '', userEmail: '', userRole: '', userStatus: '', createdOn: '' });
-    const toast = useRef(null);
-    const adminRole = [
-        { name: 'Super Admin', code: 'Super Admin' },
-        { name: 'Admin', code: 'Admin' }
-    ];
-    const adminStatus = [
-        { name: 'Active', code: 'Active' },
-        { name: 'Inactive', code: 'Inactive' }
-    ];
+    const toast = useRef(null);   
+    const services = [
+        {key:'0', name:'Broucher'},
+        {key:'1', name:'Box'},
+        {key:'2', name:'Pamphlet'},
+        {key:'3', name:'Bag'},
+        {key:'4', name:'Design'},
+        {key:'5', name:'Price Tag'},
+        {key:'6', name:'Stamp'}        
+    ]
     const header = (<div className="font-bold mb-3">Pick a password</div>);
     const footer = (
         <>
@@ -41,6 +53,19 @@ export default function Admin() {
             </ul>
         </>
     );
+    
+    const listValue = [
+        { name: 'Vendor - 1', code: 'SF' },
+        { name: 'Vendor - 2', code: 'LDN' },
+        { name: 'Vendor - 3', code: 'PRS' },
+        { name: 'Vendor - 4', code: 'IST' },
+        { name: 'Vendor - 5', code: 'BRL' },
+        { name: 'Vendor - 6', code: 'BRC' },
+        { name: 'Vendor - 7', code: 'RM' }
+    ];
+
+    const [picklistSourceValue, setPicklistSourceValue] = useState(listValue);
+    const [picklistTargetValue, setPicklistTargetValue] = useState([]);
 
     const [value3, setValue3] = useState('');
 
@@ -51,6 +76,10 @@ export default function Admin() {
 
         setCheckboxValue(selectedValue);
     };
+
+    const handleClick =() =>{
+        (selectedServices.length>0)?setVendor(true):setVendor(false)
+    }
 
     const toastAlert = (errMessage) => {
         toast.current.show({ severity: 'error', summary: 'Error', detail: errMessage, life: 3000 });
@@ -149,54 +178,41 @@ export default function Admin() {
                             </div>
                         </div>
                     </div> : <></>}
-                    
+
                     <div className="field col-12 border-300 border-bottom-1">
-                        <h5>Service Category</h5>
-                        <div className="grid">
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption1" name="option" value="Brochure" checked={checkboxValue.indexOf('Brochure') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption1">Brochure</label>
-                            </div>
+                        <h5>Services</h5>
+                        <div className="grid">                            
+                            {services.map((service)=>  
+                                <div className="col-12 md:col-1" key={service.key}>
+                                    <div className="field-checkbox">
+                                        <Checkbox inputId={service.key} name="option" value={service} checked={selectedServices.some((item) => item.key === service.key)} onChange={onCategoryChange} />
+                                        <label htmlFor={service.key}>{service.name}</label>
+                                    </div>
+                                </div>
+                        )}
                         </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption2" name="option" value="Box" checked={checkboxValue.indexOf('Box') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption2">Box</label>
-                            </div>
-                        </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption3" name="option" value="Pamphlet" checked={checkboxValue.indexOf('Pamphlet') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption3">Pamphlet</label>
-                            </div>
-                        </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption4" name="option" value="Carry Bag" checked={checkboxValue.indexOf('Carry Bag') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption4">Carry Bag</label>
-                            </div>
-                        </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption5" name="option" value="Design" checked={checkboxValue.indexOf('Design') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption5">Design</label>
-                            </div>
-                        </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption6" name="option" value="Price Tag" checked={checkboxValue.indexOf('Price Tag') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption6">Price Tag</label>
-                            </div>
-                        </div>
-                        <div className="col-12 md:col-1">
-                            <div className="field-checkbox">
-                                <Checkbox inputId="checkOption7" name="option" value="Stamp" checked={checkboxValue.indexOf('Stamp') !== -1} onChange={onCheckboxChange} />
-                                <label htmlFor="checkOption7">Stamp</label>
-                            </div>
-                        </div>
-                        </div>
+                        <Button label="Choose" className="" type="button" severity="secondary" outlined onClick={handleClick}/>
                     </div>
+
+                    {vendor ? <div className="col-12 xl:col-10">
+                        <div className="card">
+                            <h5>PickList</h5>
+                            <PickList
+                                source={picklistSourceValue}
+                                target={picklistTargetValue}
+                                sourceHeader="From"
+                                targetHeader="To"
+                                itemTemplate={(item) => <div>{item.name}</div>}
+                                onChange={(e) => {
+                                    setPicklistSourceValue(e.source);
+                                    setPicklistTargetValue(e.target);
+                                }}
+                                sourceStyle={{ height: '200px' }}
+                                targetStyle={{ height: '200px' }}
+                            ></PickList>
+                        </div>
+                     </div>:<></>}
+
                 </div>
             </div>
         </form>

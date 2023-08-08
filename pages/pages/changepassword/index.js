@@ -28,8 +28,8 @@ const postUser = async() => {
             setConfirmOtp(data.otp);
     }
     ).catch(err=>{
-        console.log(err.res.data);
-        validat_mob(err.res.data.message)
+        console.log(err.response.data);
+        validat_mob(err.response.data.message)
     })
     }else{
         validat_mob("Enter Valid Mobile No")
