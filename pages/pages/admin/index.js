@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { v4 as uuid } from "uuid";
 import axios from 'axios';
+import moment from 'moment';
 
 import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
@@ -14,18 +15,10 @@ import { Badge } from 'primereact/badge';
 import { classNames } from 'primereact/utils';
 import { FilterMatchMode } from 'primereact/api';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
-
+import { getSession } from '../../util';
 
 const Admins = () => {
-    const [userList, setUserList] = useState([{
-        id: uuid(),
-        userName: 'Raman',
-        userMobile: '8056553720',
-        userEmail: 'r.v.raman2312@gmail.com',
-        userRole: 'Super Admin',
-        userStatus: 'Active',
-        createdOn: '27-Jul-2023'
-    }]);
+    const [userList, setUserList] = useState([]);
     const adminRole = [
         { name: 'All', code: '' },
         { name: 'Super Admin', code: 'Super Admin' },
@@ -45,7 +38,6 @@ const Admins = () => {
         userStatus: { value: '', matchMode: FilterMatchMode.EQUALS }
     });
     const toast = useRef(null);
-    const dt = useRef(null);
     const [loaded, setLoaded] = useState(false);
     const [selectedList, setSelectedList] = useState([]);
     const router = useRouter();
@@ -143,56 +135,12 @@ const Admins = () => {
             </div>
         )
     };
-    const exportExcel = () => {
-        const ExcelJS = require('exceljs');
-        const wb = new ExcelJS.Workbook();
-        const sheet = wb.addWorksheet('Admins', { views: [{ state: 'frozen', xSplit: 1, ySplit: 1 }] });
-        var borderStyles = { top: { style: "thin" }, left: { style: "thin" }, bottom: { style: "thin" }, right: { style: "thin" } };
-        sheet.columns = [
-            { header: '#', key: 'id' },
-            { header: 'Category Name', key: 'name' },
-            { header: 'Product Count', key: 'product' },
-            { header: 'Created By', key: 'created_name' },
-            { header: 'Created On', key: 'created_on', style: { numFmt: 'DD-MMM-YYYY' } },
-            { header: 'Status', key: 'status' }
-        ];
-        selectedList.map((selected, index) => (
-            sheet.addRow({
-                id: index + 1,
-                name: selected.name,
-                product: parseInt(selected.product),
-                created_name: selected.created_name,
-                created_on: moment(selected.created_on).format('DD-MMM-YYYY'),
-                status: selected.status
-            })
-        ));
-        sheet.getRow(1).font = { bold: true, size: 11 };
-        sheet.columns.forEach(function (column) {
-            let maxLength = 0;
-            column["eachCell"]({ includeEmpty: true }, function (cell) {
-                var columnLength = cell.value ? cell.value.toString().length + 2 : 10;
-                if (columnLength > maxLength) { maxLength = columnLength; }
-            });
-            column.width = maxLength + 2;
-        });
-        sheet.eachRow({ includeEmpty: true }, function (row) {
-            row.eachCell({ includeEmpty: true }, function (cell) {
-                cell.border = borderStyles;
-            });
-        });
-        wb.xlsx.writeBuffer().then(data => {
-            const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset-UTF-8' });
-            const url = window.URL.createObjectURL(blob);
-            const anchor = document.createElement('a');
-            anchor.href = url;
-            anchor.download = `Admins List - ${moment(new Date()).format('DD-MM-YYYY HH:mm:ss')}.xlsx`;
-            anchor.click();
-            window.URL.revokeObjectURL(url);
-        });
-    };
     const status = (rowData) => {
-        return <Badge value={rowData.userStatus} severity={rowData.userStatus === 'Active' ? 'success' : 'danger'}></Badge>
+        return <Badge value={rowData.status} severity={rowData.status === 'Active' ? 'success' : 'danger'}></Badge>
     };
+    const created = (rowData) =>{
+        return moment(rowData.createdOn).format('DD-MMM-YYYY HH:mm:ss')
+    }
     const actions = (rowData) => {
         return (
             <>
@@ -276,7 +224,16 @@ const Admins = () => {
     useEffect(() => {
         const getData = async () => {
             setLoaded(true);
-            setLoaded(false);
+            const session = getSession();
+            if (!session) { router.push("/") }
+            await axios.post(`${process.env.API_URL}/list_admin`, { session: session }, { headers: { 'x-api-key': process.env.API_KEY } }).then((response) => {
+                console.log(response.data.result);
+                setUserList(response.data.result)
+                setLoaded(false);
+            }).catch((error) => {
+                console.log(error);
+            });
+
         }
         document.title = 'Admin Lists | NAC Admin';
         getData();
@@ -290,28 +247,28 @@ const Admins = () => {
                 dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort
             >
                 <Column
-                    header='Name' headerStyle={{ 'minWidth': '40%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userName' filterField="userName" className='text-start'
+                    header='Name' headerStyle={{ 'minWidth': '32%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='name' filterField="userName" className='text-left'
                 />
                 <Column
                     header='Mobile' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userMobile' filterField="userMobile" className='text-end'
+                    field='mobile' filterField="userMobile" className='text-right'
                 />
                 <Column
                     header='EMail' headerStyle={{ width: '26%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userEmail' filterField="userEmail" className='text-start'
+                    field='email' filterField="userEmail" className='text-left'
                 />
                 <Column
                     header='Role' headerStyle={{ width: '8%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userRole' filterField="userRole" className='text-center'
+                    field='role' filterField="userRole" className='text-left'
                 />
                 <Column
                     header='Status' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userStatus' body={status} filterField="userStatus" className='text-center'
+                    field='status' body={status} filterField="userStatus" className='text-center'
                 />
                 <Column
-                    header='Created On' headerStyle={{ width: '6%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='createdOn' filterField="createdOn" className='text-center'
+                    header='Created On' headerStyle={{ width: '12%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='createdOn'  body={created} filterField="createdOn" className='text-center'
                 />
                 <Column
                     header='Actions' headerStyle={{ width: '4%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}
