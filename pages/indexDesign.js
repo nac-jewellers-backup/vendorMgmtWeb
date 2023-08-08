@@ -126,7 +126,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">160</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-shopping-cart text-blue-500 text-xl" />
+                            <i className="pi pi-phone text-blue-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total</span>
@@ -141,7 +141,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">150</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-dollar text-green-500 text-xl" />
+                            <i className="pi pi-shopping-cart text-green-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -156,7 +156,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">$ 15000</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-users text-cyan-500 text-xl" />
+                            <i className="pi pi-dollar text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -170,8 +170,8 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Paid Amount</span>
                             <div className="text-900 font-medium text-xl">$ 250000</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-users text-cyan-500 text-xl" />
+                        <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                            <i className="pi pi-dollar text-blue-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -187,7 +187,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">42</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-inbox text-blue-500 text-xl" />
+                            <i className="pi pi-users text-blue-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -202,7 +202,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">$ 80000</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-dollar text-orange-500 text-xl" />
+                            <i className="pi pi-dollar text-red-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">For Vendors </span>
@@ -217,7 +217,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">12</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-user-plus text-cyan-500 text-xl" />
+                            <i className="pi pi-inbox text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Now</span>
@@ -232,7 +232,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">138 </div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-book text-purple-500 text-xl" />
+                            <i className="pi pi-box text-purple-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Till Now</span>
