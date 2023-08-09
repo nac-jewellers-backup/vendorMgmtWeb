@@ -169,7 +169,7 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Orders Confirmed</span>
                             <div className="text-900 font-medium text-xl">42</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                        <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                             <i className="pi pi-check-circle text-blue-500 text-xl" />
                         </div>
                     </div>
@@ -184,7 +184,7 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Quotation Due</span>
                             <div className="text-900 font-medium text-xl">42</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                        <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
                             <i className="pi pi-paperclip text-blue-500 text-xl" />
                         </div>
                     </div>
@@ -200,7 +200,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl">150</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-shopping-cart text-green-500 text-xl" />
+                            <i className="pi pi-shopping-cart text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -214,8 +214,8 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Orders Amount</span>
                             <div className="text-900 font-medium text-xl">&#8377; 15000</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                          <span className="text-green-500 text-xl">&#8377; </span>
+                        <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                          <span className="text-cyan-500 text-xl">&#8377; </span>
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -229,8 +229,8 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Paid Amount</span>
                             <div className="text-900 font-medium text-xl">&#8377; 250000</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                        <span className="text-blue-500 text-xl">&#8377; </span>
+                        <div className="flex align-items-center justify-content-center bg-yellow-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                        <span className="text-green-500 text-xl">&#8377; </span>
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
@@ -260,7 +260,7 @@ const Dashboard = () => {
                             <div className="text-900 font-medium text-xl"> 42</div>
                         </div>
                         <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-question-circle text-blue-500 text-xl" />
+                            <i className="pi pi-question-circle text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">In Last 5 Days </span>
@@ -289,8 +289,8 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Closed Orders</span>
                             <div className="text-900 font-medium text-xl">138 </div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-purple-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-box text-purple-500 text-xl" />
+                        <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                            <i className="pi pi-box text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Till Now</span>
@@ -304,8 +304,8 @@ const Dashboard = () => {
                             <span className="block text-500 font-medium mb-3">Vendors</span>
                             <div className="text-900 font-medium text-xl">42</div>
                         </div>
-                        <div className="flex align-items-center justify-content-center bg-blue-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
-                            <i className="pi pi-users text-blue-500 text-xl" />
+                        <div className="flex align-items-center justify-content-center bg-cyan-100 border-round" style={{ width: '2.5rem', height: '2.5rem' }}>
+                            <i className="pi pi-users text-cyan-500 text-xl" />
                         </div>
                     </div>
                     <span className="text-green-500 font-medium">Total </span>
