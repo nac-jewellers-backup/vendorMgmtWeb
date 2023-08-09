@@ -1,13 +1,14 @@
 import Link from 'next/link';
-import Router, { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 import { classNames } from 'primereact/utils';
 import React, { forwardRef, useContext, useImperativeHandle, useRef } from 'react';
 import { LayoutContext } from './context/layoutcontext';
 import { Menu } from 'primereact/menu';
 import { Badge } from 'primereact/badge';
-
+import { resetUserSession } from '../pages/util';
 
 const AppTopbar = forwardRef((props, ref) => {
+    const router = useRouter();
     const { layoutConfig, layoutState, onMenuToggle, showProfileSidebar } = useContext(LayoutContext);
     const menubuttonRef = useRef(null);
     const topbarmenuRef = useRef(null);
@@ -18,6 +19,11 @@ const AppTopbar = forwardRef((props, ref) => {
         topbarmenu: topbarmenuRef.current,
         topbarmenubutton: topbarmenubuttonRef.current
     }));
+    const logout =()=>{
+        resetUserSession();
+        router.push('/')
+        
+    }
     const overlayMenuItems = [
         // {
         //     label: 'Profile',
@@ -32,11 +38,21 @@ const AppTopbar = forwardRef((props, ref) => {
         {
             separator: true
         },
-        {
-            label: 'Logout',
-            icon: 'pi pi-sign-out',
-            url: '/'
+        // {
+        //     label: 'Logout',
+        //     icon: 'pi pi-sign-out',
+        //     url: '/'
+        // },
+         {
+            template: (item, options) => {
+                return (
+                    <button onClick={logout} className={classNames(options.className, 'w-full p-link flex align-items-center')}>
+                      <i className="pi pi-sign-out mr-2" /> Logout            
+                    </button>
+                )
+            }
         }
+
     ];
     const toggleMenu = (event) => {
         menu.current.toggle(event);

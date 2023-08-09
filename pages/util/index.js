@@ -21,5 +21,6 @@ module.exports = {
     resetUserSession: function () {
         sessionStorage.removeItem('user');
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('session');
     }
 }
