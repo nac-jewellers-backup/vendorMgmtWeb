@@ -323,10 +323,10 @@ const Dashboard = () => {
                 <div className="card">
                     <h5>Recent 5 Enquiries</h5>
                     <DataTable value={products} rows={5} paginator responsiveLayout="scroll">
-                    <Column field="name" header="Title" sortable style={{ width: '35%' }} />
-                        <Column field="description" header="Enquiry" sortable style={{ width: '35%' }} />
-                        <Column field="price" header="Service" sortable style={{ width: '35%' }} body={(data) => formatCurrency(data.price)} />
-                        <Column field="category" header="Deadline" sortable style={{ width: '35%' }} />
+                    <Column field="name" header="Title" sortable style={{ width: '40%' }} />
+                        <Column field="description" header="Enquiry" sortable style={{ width: '30%' }} />
+                        <Column field="price" header="Service" sortable style={{ width: '20%' }} body={(data) => formatCurrency(data.price)} />
+                        <Column field="category" header="Deadline" sortable style={{ width: '10%' }} />
                     </DataTable>
                 </div>
 
@@ -430,12 +430,12 @@ const Dashboard = () => {
                 </div>
                 
                 <div className="card">
-                    <h5>Recent 5 Oreds</h5>
+                    <h5>Recent 5 Orders</h5>
                     <DataTable value={products2} rows={5} paginator responsiveLayout="scroll">
-                        <Column field="name" header="Vendor Name" sortable style={{ width: '35%' }} />
+                        <Column field="name" header="Vendor Name" sortable style={{ width: '40%' }} />
                         <Column field="description" header="Contact person" sortable style={{ width: '35%' }} />
-                        <Column field="price" header="Contact No" sortable style={{ width: '35%' }} body={(data) => formatCurrency(data.price)} />
-                        <Column field="category" header="Link" sortable style={{ width: '35%' }} />
+                        <Column field="price" header="Mobile" sortable style={{ width: '20%' }} body={(data) => formatCurrency(data.price)} />5
+                        <Column field="category" header="Link" sortable style={{ width: '5%' }} />
                     </DataTable>
                 </div>
 
