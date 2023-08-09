@@ -6,7 +6,7 @@ const AppMenu = () => {
     const model = [
         {
             items: [
-                { label: 'Dash Board', icon: 'pi pi-fw pi-chart-pie', to: '/indexDesign', id: 'navEnquiry' },
+                { label: 'Dashboard', icon: 'pi pi-fw pi-chart-pie', to: '/indexDesign', id: 'navEnquiry' },
                 { label: 'Enquiry List', icon: 'pi pi-fw pi-phone', to: '/pages/enquiry', id: 'navEnquiry' },
                 { label: 'Admin List', icon: 'pi pi-fw pi-user', to: '/pages/admin', id: 'navAdmin' },
                 { label: 'Service List', icon: 'pi pi-fw pi-briefcase', to: '/pages/add-service', id: 'navService' },

@@ -1,15 +1,27 @@
 {
     "data": [
-        {"id": "1000","code": "f230fh0g3","name": "Bamboo Watch","description": "Product Description","image": "bamboo-watch.jpg","price": 65,"category": "Accessories","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
-        {"id": "1001","code": "nvklal433","name": "Black Watch","description": "Product Description","image": "black-watch.jpg","price": 72,"category": "Accessories","quantity": 61,"inventoryStatus": "INSTOCK","rating": 4},
-        {"id": "1002","code": "zz21cz3c1","name": "Blue Band","description": "Product Description","image": "blue-band.jpg","price": 79,"category": "Fitness","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 3},
-        {"id": "1003","code": "244wgerg2","name": "Blue T-Shirt","description": "Product Description","image": "blue-t-shirt.jpg","price": 29,"category": "Clothing","quantity": 25,"inventoryStatus": "INSTOCK","rating": 5},
-        {"id": "1004","code": "h456wer53","name": "Bracelet","description": "Product Description","image": "bracelet.jpg","price": 15,"category": "Accessories","quantity": 73,"inventoryStatus": "INSTOCK","rating": 4},
-        {"id": "1005","code": "av2231fwg","name": "Brown Purse","description": "Product Description","image": "brown-purse.jpg","price": 120,"category": "Accessories","quantity": 0,"inventoryStatus": "OUTOFSTOCK","rating": 4},
-        {"id": "1006","code": "bib36pfvm","name": "Chakra Bracelet","description": "Product Description","image": "chakra-bracelet.jpg","price": 32,"category": "Accessories","quantity": 5,"inventoryStatus": "LOWSTOCK","rating": 3},
-        {"id": "1007","code": "mbvjkgip5","name": "Galaxy Earrings","description": "Product Description","image": "galaxy-earrings.jpg","price": 34,"category": "Accessories","quantity": 23,"inventoryStatus": "INSTOCK","rating": 5},
-        {"id": "1008","code": "vbb124btr","name": "Game Controller","description": "Product Description","image": "game-controller.jpg","price": 99,"category": "Electronics","quantity": 2,"inventoryStatus": "LOWSTOCK","rating": 4},
-        {"id": "1009","code": "cm230f032","name": "Gaming Set","description": "Product Description","image": "gaming-set.jpg","price": 299,"category": "Electronics","quantity": 63,"inventoryStatus": "INSTOCK","rating": 3}
+        {"id": "1000","code": "f230fh0g3","name": "Broucher Design","description": "Open","image": "bamboo-watch.jpg","price": "Broucher","category": "01/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1001","code": "f230fh0g3","name": "Title - 2","description": "Close","image": "bamboo-watch.jpg","price": "Box","category": "23/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1002","code": "f230fh0g3","name": "Title - 3","description": "Close","image": "bamboo-watch.jpg","price": "Pamphlet","category": "25/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1003","code": "f230fh0g3","name": "Title - 4","description": "Open","image": "bamboo-watch.jpg","price": "Bag","category": "05/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1004","code": "f230fh0g3","name": "Title - 5","description": "Close","image": "bamboo-watch.jpg","price": "Design","category": "10/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1005","code": "f230fh0g3","name": "Title - 6","description": "Close","image": "bamboo-watch.jpg","price": "Price Tag","category": "15/07/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1006","code": "f230fh0g3","name": "Title - 7","description": "Open","image": "bamboo-watch.jpg","price": "Stamp","category": "25/08/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1007","code": "f230fh0g3","name": "Title - 8","description": "Close","image": "bamboo-watch.jpg","price": "Design","category": "08/06/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1008","code": "f230fh0g3","name": "Title - 9","description": "Close","image": "bamboo-watch.jpg","price": "Pamphlet","category": "09/08/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1009","code": "f230fh0g3","name": "Title - 10","description": "Open","image": "bamboo-watch.jpg","price": "Box","category": "03/08/2023","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5}
+    ],
+    "data2": [
+        {"id": "1000","code": "f230fh0g3","name": "S&C Printers","description": "Praveen","image": "bamboo-watch.jpg","price": "8538966839","category": "235475645","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1001","code": "f230fh0g3","name": "Maran company","description": "Raman","image": "bamboo-watch.jpg","price": "7547823997","category": "56654132","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1002","code": "f230fh0g3","name": "Seawaves Printers","description": "Vignesh","image": "bamboo-watch.jpg","price": "9654892589","category": "87864512","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1003","code": "f230fh0g3","name": "Printing Services","description": "Bala","image": "bamboo-watch.jpg","price": "8956321459","category": "265654413","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1004","code": "f230fh0g3","name": "Binding services to print","description": "Navin","image": "bamboo-watch.jpg","price": "7563248568","category": "8793241321","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1005","code": "f230fh0g3","name": "Test printing press","description": "Gopi","image": "bamboo-watch.jpg","price": "9326548234","category": "544554121","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1006","code": "f230fh0g3","name": "onedesign company","description": "Raja","image": "bamboo-watch.jpg","price": "7856923145","category": "65412121","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1007","code": "f230fh0g3","name": "Design Companies ","description": "Munish","image": "bamboo-watch.jpg","price": "9654823654","category": "54132132","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1008","code": "f230fh0g3","name": "Brand Crowd","description": "Kanth","image": "bamboo-watch.jpg","price": "9568521452","category": "8323221321","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5},
+        {"id": "1009","code": "f230fh0g3","name": "Design Developer","description": "Baba","image": "bamboo-watch.jpg","price": "7456823658","category": "722112222","quantity": 24,"inventoryStatus": "INSTOCK","rating": 5}
     ]
 }
     
