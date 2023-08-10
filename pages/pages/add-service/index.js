@@ -14,17 +14,14 @@ import { Badge } from 'primereact/badge';
 import { classNames } from 'primereact/utils';
 import { FilterMatchMode } from 'primereact/api';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
+import { getSession } from '../../util';
 
 
 const Admins = () => {
     const [userList, setUserList] = useState([{
         id: uuid(),
-        userName: 'Brochure Design',
-        userMobile: 'BTD001',
-        // userEmail: 'ragujohn31@gmail.com',
-        // userRole: 'Super Admin',
-        // userStatus: 'Active',
-        // createdOn: '27-Jul-2023',
+        service_name: 'Brochure Design',
+        id: 'BTD001',
     }]);
     const adminRole = [
         { name: 'All', code: '' },
@@ -277,7 +274,15 @@ const Admins = () => {
     useEffect(() => {
         const getData = async () => {
             setLoaded(true);
+            const session = getSession();
+            if (!session) { router.push("/") }
+            await axios.post(`${process.env.API_URL}/list_service`, { session: session }, { headers: { 'x-api-key': process.env.API_KEY } }).then((response) => {
+                console.log(response.data.result);
+                setUserList(response.data.result)
             setLoaded(false);
+            }).catch((error) => {
+                console.log(error);
+            });
         }
         document.title = 'Add Service | NAC Admin';
         getData();
@@ -291,12 +296,12 @@ const Admins = () => {
                 dataKey="id" value={userList} rows={10} sortMode="multiple" removableSort
             >
                 <Column
-                    header='Service Name' headerStyle={{ 'minWidth': '75%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userName' filterField="userName" className='text-start'
+                    header='Service Name' headerStyle={{ 'minWidth': '60%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='service_name' filterField="service_name" className='text-start'
                 />
                 <Column
-                    header='ID' headerStyle={{ width: '15%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
-                    field='userMobile' filterField="userMobile" className='text-end'
+                    header='Service - ID' headerStyle={{ width: '30%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }} sortable
+                    field='id' filterField="id" className='text-end'
                 />
                 <Column
                     header='Actions' headerStyle={{ width: '10%', backgroundColor: '#d7e4fc', whiteSpace: 'nowrap' }}

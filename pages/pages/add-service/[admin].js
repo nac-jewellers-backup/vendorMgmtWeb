@@ -4,15 +4,15 @@ import axios from 'axios';
 import { useRouter } from 'next/router';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
 import { Divider } from 'primereact/divider';
-import { Dropdown } from 'primereact/dropdown';
 import { Toast } from 'primereact/toast';
+import { getSession } from '../../util';
 
 export default function Admin() {
+    const [service_name,setName] = useState("");
     const router = useRouter();
     const { admin } = router.query;
-    const page = admin === 'newService' ? 'Add Service' : 'Edit Service';
+    const page = admin === 'newService' ? 'Add' : 'Edit';
     const [value, setValue] = useState('');
     const [adminList, setAdminList] = useState({ id: uuid(), userName: '', userPassword: '', userMobile: '', userEmail: '', userRole: '', userStatus: '', createdOn: '' });
     const toast = useRef(null);
@@ -40,10 +40,12 @@ export default function Admin() {
     const toastAlert = (errMessage) => {
         toast.current.show({ severity: 'error', summary: 'Error', detail: errMessage, life: 3000 });
     };
-    const handleChange = (event) => {
-        const { id, value } = event.target;
-        setAdminList({ ...adminList, [id]: value })
-    };
+
+    // const handleChange = (event) => {
+    //     const { id, value } = event.target;
+    //     setAdminList({ ...adminList, [id]: value })
+    // };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!adminList.userName) { toastAlert('Enter User Name'); }
@@ -53,19 +55,39 @@ export default function Admin() {
         else if (!adminList.userRole) { toastAlert('Select Role'); }
         else if (!adminList.userStatus) { toastAlert('Select Status'); }
     };
+
     useEffect(() => {
-        document.title = page + ' | NAC Vendor';
+        document.title = page + ' Service | NAC Vendor';
         document.getElementById('navService').classList.add('active-route');
     }, []);
+
+    const [service_validation,validat_Serv] = useState("");
+
+    // Add Service
+    const postUser = async(e) => {
+    e.preventDefault();
+    if(service_name !=""){
+       await axios.post(`${process.env.API_URL}/add_service`, {session:getSession(), service:{id: uuid(), service_name:service_name, type: 'add'}},{headers:{'x-api-key':process.env.API_KEY }})
+    .then(res => {   
+            console.log(res.data);
+            router.push("/pages/add-service");
+    }
+    ).catch(err=>{
+        console.log(err.response.data);
+        validat_Serv(err.response.data.message)
+    })  }else{
+        validat_Serv("Enter Valid Service Name")
+        }
+    }
     return (
-        <form method='POST' onSubmit={handleSubmit}>
+        <form method='POST' onSubmit={postUser}>
             <Toast ref={toast} />
             <div className='card'>
                 <div className="flex flex-column md:flex-row md:justify-content-between md:align-items-center">
-                    <h5 className="m-0">{page}</h5>
+                    <h5 className="m-0">{page} Service</h5>
                     <span className="block md:mt-0 p-input-icon-left">
                         <Button icon={`pi pi-${admin === 'new' ? 'plus' : 'pencil'}`} severity="success" className="mr-1" tooltip={page} tooltipOptions={{ position: 'top' }} disabled={false}/>
-                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service')} />
+                        <Button icon="pi pi-arrow-left" severity="danger" className="ml-1" type="button" tooltip="Go Back" tooltipOptions={{ position: 'top' }} onClick={() => router.push('/pages/add-service')} />
                     </span>
                 </div>
                 <hr />
@@ -73,87 +95,18 @@ export default function Admin() {
                     <div className="field col-12">
                         <span className="p-float-label">
                             <InputText
-                                id="userName"
-                                keyfilter={/^[a-zA-Z ]*$/}
+                                type="text"
+                                id="service_name"
+                                // keyfilter={/^[a-zA-Z ]*$/}
                                 className='w-full'
                                 autoComplete='off'
-                                maxLength={50}
-                                value={adminList.userName}
-                                onChange={handleChange}
+                                maxLength={100}
+                                value={service_name} onChange={(e) => setName(e.target.value) }
                             />
-                            <label htmlFor="userName">Service Name</label>
+                            <label htmlFor="service_name">Service Name</label>
                         </span>
                     </div>
-                    {/* <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="userMobile"
-                                keyfilter="pint"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={10}
-                                value={adminList.userMobile}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userMobile">Enter Mobile Number</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <InputText
-                                id="userEmail"
-                                keyfilter="email"
-                                className='w-full'
-                                autoComplete='off'
-                                maxLength={25}
-                                value={adminList.userEmail}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userEmail">Enter EMail Address</label>
-                        </span>
-                    </div>
-                    {admin === 'newService' ? <div className="field col-12">
-                        <span className="p-float-label">
-                            <Password
-                                id="userPassword"
-                                panelClassName='w-full'
-                                inputClassName='w-full'
-                                className='w-full'
-                                header={header}
-                                footer={footer}
-                                toggleMask
-                                maxLength={15}
-                                value={adminList.userPassword}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userPassword">Password</label>
-                        </span>
-                    </div> : <></>}
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <Dropdown
-                                id="userRole"
-                                className='w-full'
-                                optionLabel="name"
-                                options={adminRole}
-                                value={adminList.userRole}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userRole">Select Role</label>
-                        </span>
-                    </div>
-                    <div className="field col-12">
-                        <span className="p-float-label">
-                            <Dropdown id="userStatus"
-                                className='w-full'
-                                optionLabel="name"
-                                options={adminStatus}
-                                value={adminList.userStatus}
-                                onChange={handleChange}
-                            />
-                            <label htmlFor="userStatus">Select Status</label>
-                        </span>
-                    </div> */}
+                    <lable className="ml-2 text-red-600">{service_validation}</lable>
                 </div>
             </div>
         </form>

@@ -29,6 +29,7 @@ const LoginPage = () => {
         setDisable(false);
         const { mobile_number, password } = login;
         if (!mobile_number) { setErr('Enter the mobile number!') }
+        else if(mobile_number.length !== 10) { setErr('Enter valid mobile number!') }
         else if (!password) { setErr('Enter the password') }
         else {
             setDisable(true);
