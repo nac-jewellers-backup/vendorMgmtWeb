@@ -43,7 +43,7 @@ const postUser = async(e) => {
     .then(res => {
         const {data} = res.data;        
             console.log(res.data);
-            // validat_mob("Valid No") 
+            validat_mob('') 
             setMobile_vefiy(0)
             setOtp_vefiy(1)
             setConfirmOtp(data.otp);
@@ -60,6 +60,7 @@ const postUser = async(e) => {
 
 // Otp == confirmOtp Check
 const check_otp =()=>{
+        
     console.log(otp, confirmOtp);
     if (otp.toString() === confirmOtp.toString()){
         setMobile_vefiy(0)
